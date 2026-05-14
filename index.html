@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CompTIA CySA+ CS0-003 Study Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;600;700;900&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0d12;--bg2:#0f1318;--bg3:#151b24;--bg4:#1a2230;
+    --border:#1e2d40;--border-bright:#2a4060;
+    --text:#c8d8e8;--text-dim:#6a8aaa;--text-bright:#e8f4ff;
+    --accent:#00b4ff;--accent2:#00e5a0;--accent3:#ff6b35;--accent4:#ffd700;--accent5:#b060ff;--red:#ff4466;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.7;}
+  body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,180,255,0.012) 2px,rgba(0,180,255,0.012) 4px);pointer-events:none;z-index:1000;}
+  .site-header{background:linear-gradient(135deg,#060b10 0%,#0a1520 50%,#060b10 100%);border-bottom:1px solid var(--border-bright);padding:3rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden;}
+  .site-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,180,255,0.08) 0%,transparent 70%);}
+  .header-badge{display:inline-block;font-family:'Share Tech Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;color:var(--accent);background:rgba(0,180,255,0.08);border:1px solid rgba(0,180,255,0.3);padding:0.3rem 1rem;border-radius:2px;margin-bottom:1.2rem;}
+  .site-header h1{font-family:'Exo 2',sans-serif;font-weight:900;font-size:clamp(2rem,5vw,3.5rem);color:var(--text-bright);letter-spacing:-0.02em;line-height:1.1;margin-bottom:0.5rem;position:relative;}
+  .site-header h1 span{color:var(--accent);text-shadow:0 0 30px rgba(0,180,255,0.4);}
+  .site-header .subtitle{font-family:'Share Tech Mono',monospace;color:var(--text-dim);font-size:0.85rem;letter-spacing:0.12em;margin-bottom:2rem;}
+  .header-stats{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;}
+  .stat-pill{font-family:'Share Tech Mono',monospace;font-size:0.75rem;color:var(--text-dim);border:1px solid var(--border);padding:0.35rem 0.9rem;border-radius:20px;background:rgba(255,255,255,0.02);}
+  .stat-pill strong{color:var(--accent2);}
+  .container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem;}
+  .toc-nav{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1.5rem;margin-bottom:2.5rem;}
+  .toc-nav h2{font-family:'Share Tech Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;margin-bottom:1rem;}
+  .toc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:0.4rem;}
+  .toc-item{display:flex;align-items:center;gap:0.6rem;padding:0.45rem 0.7rem;border-radius:3px;text-decoration:none;color:var(--text-dim);font-size:0.82rem;transition:all 0.15s;border:1px solid transparent;}
+  .toc-item:hover{color:var(--text-bright);background:rgba(0,180,255,0.06);border-color:var(--border);}
+  .toc-num{font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--accent);min-width:2.2rem;}
+  .domain-weights{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1.5rem;margin-bottom:2.5rem;}
+  .domain-weights h2{font-family:'Share Tech Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;color:var(--accent);margin-bottom:1.2rem;}
+  .weight-row{display:flex;align-items:center;gap:1rem;margin-bottom:0.7rem;font-size:0.8rem;}
+  .weight-label{min-width:300px;color:var(--text-dim);}
+  .weight-bar-bg{flex:1;height:6px;background:var(--bg4);border-radius:3px;overflow:hidden;}
+  .weight-bar{height:100%;border-radius:3px;}
+  .weight-pct{font-family:'Share Tech Mono',monospace;font-size:0.75rem;min-width:2.5rem;text-align:right;}
+  .chapter{background:var(--bg2);border:1px solid var(--border);border-radius:4px;margin-bottom:2rem;overflow:hidden;}
+  .chapter-header{display:flex;align-items:center;gap:1.2rem;padding:1.2rem 1.5rem;border-bottom:1px solid var(--border);background:var(--bg3);}
+  .chapter-num{font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:var(--accent);background:rgba(0,180,255,0.08);border:1px solid rgba(0,180,255,0.2);padding:0.25rem 0.6rem;border-radius:2px;white-space:nowrap;}
+  .chapter-title{font-family:'Exo 2',sans-serif;font-weight:700;font-size:1.1rem;color:var(--text-bright);flex:1;}
+  .chapter-obj{font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--text-dim);background:var(--bg4);border:1px solid var(--border);padding:0.2rem 0.6rem;border-radius:2px;white-space:nowrap;}
+  .chapter-body{padding:1.5rem;}
+  .section-block{margin-bottom:1.5rem;}
+  .section-block:last-child{margin-bottom:0;}
+  .section-title{font-family:'Exo 2',sans-serif;font-weight:600;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:0.7rem;padding-bottom:0.4rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:0.5rem;}
+  .section-title::before{content:'▸';color:var(--accent);font-size:0.65rem;}
+  .def-grid{display:grid;grid-template-columns:minmax(190px,auto) 1fr;gap:0 1.2rem;font-size:0.83rem;}
+  .def-term{font-family:'Share Tech Mono',monospace;color:var(--accent4);padding:0.35rem 0;border-bottom:1px solid rgba(255,255,255,0.04);align-self:start;}
+  .def-val{color:var(--text);padding:0.35rem 0;border-bottom:1px solid rgba(255,255,255,0.04);line-height:1.5;}
+  .data-table{width:100%;border-collapse:collapse;font-size:0.8rem;margin-top:0.5rem;}
+  .data-table th{font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);background:var(--bg4);padding:0.6rem 0.8rem;text-align:left;border:1px solid var(--border);}
+  .data-table td{padding:0.5rem 0.8rem;border:1px solid var(--border);vertical-align:top;color:var(--text);}
+  .data-table tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+  .data-table tr:hover td{background:rgba(0,180,255,0.04);}
+  .hl-gold{font-family:'Share Tech Mono',monospace;color:var(--accent4);font-weight:bold;}
+  .good{color:var(--accent2);}
+  .bad{color:var(--red);}
+  .neutral{color:var(--text-dim);}
+  .callout{border-left:3px solid;padding:0.8rem 1rem;border-radius:0 3px 3px 0;font-size:0.82rem;margin:0.8rem 0;line-height:1.55;}
+  .callout-exam{border-color:var(--accent4);background:rgba(255,215,0,0.05);color:var(--text);}
+  .callout-exam::before{content:'★ EXAM TIP  ';font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;color:var(--accent4);display:block;margin-bottom:0.35rem;}
+  .callout-warning{border-color:var(--accent3);background:rgba(255,107,53,0.05);color:var(--text);}
+  .callout-warning::before{content:'⚠ CRITICAL  ';font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;color:var(--accent3);display:block;margin-bottom:0.35rem;}
+  .callout-info{border-color:var(--accent);background:rgba(0,180,255,0.05);color:var(--text);}
+  .callout-info::before{content:'◈ NOTE  ';font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;color:var(--accent);display:block;margin-bottom:0.35rem;}
+  .concept-list{list-style:none;font-size:0.83rem;}
+  .concept-list li{padding:0.25rem 0 0.25rem 1.2rem;position:relative;color:var(--text);border-bottom:1px solid rgba(255,255,255,0.03);}
+  .concept-list li::before{content:'›';position:absolute;left:0;color:var(--accent);font-family:'Share Tech Mono',monospace;}
+  .concept-list li strong{color:var(--text-bright);font-weight:600;}
+  .concept-list li code{font-family:'Share Tech Mono',monospace;background:var(--bg4);border:1px solid var(--border);padding:0.05rem 0.35rem;border-radius:2px;font-size:0.8em;color:var(--accent2);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+  .mini-h{font-family:'Share Tech Mono',monospace;font-size:0.72rem;color:var(--text-dim);letter-spacing:0.12em;text-transform:uppercase;margin:0.8rem 0 0.4rem;}
+  .ts-steps{counter-reset:ts;}
+  .ts-step{display:flex;gap:1rem;padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.83rem;align-items:flex-start;}
+  .ts-step::before{counter-increment:ts;content:counter(ts);font-family:'Share Tech Mono',monospace;font-size:0.7rem;color:var(--accent);background:rgba(0,180,255,0.1);border:1px solid rgba(0,180,255,0.25);width:1.6rem;height:1.6rem;border-radius:2px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:0.1rem;}
+  .tag-row{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.4rem;}
+  .tag{font-family:'Share Tech Mono',monospace;font-size:0.7rem;padding:0.2rem 0.55rem;border-radius:2px;border:1px solid;}
+  .tag-blue{color:var(--accent);border-color:rgba(0,180,255,0.3);background:rgba(0,180,255,0.06);}
+  .tag-green{color:var(--accent2);border-color:rgba(0,229,160,0.3);background:rgba(0,229,160,0.06);}
+  .tag-orange{color:var(--accent3);border-color:rgba(255,107,53,0.3);background:rgba(255,107,53,0.06);}
+  .tag-gold{color:var(--accent4);border-color:rgba(255,215,0,0.3);background:rgba(255,215,0,0.06);}
+  .tag-purple{color:var(--accent5);border-color:rgba(176,96,255,0.3);background:rgba(176,96,255,0.06);}
+  .site-footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-family:'Share Tech Mono',monospace;font-size:0.7rem;color:var(--text-dim);letter-spacing:0.1em;margin-top:2rem;}
+  [id]{scroll-margin-top:1rem;}
+  p{font-size:0.83rem;color:var(--text);margin-bottom:0.6rem;}
+  code{font-family:'Share Tech Mono',monospace;background:var(--bg4);border:1px solid var(--border);padding:0.05rem 0.35rem;border-radius:2px;font-size:0.82em;color:var(--accent2);}
+  @media(max-width:640px){
+    .two-col{grid-template-columns:1fr;}
+    .header-stats{gap:0.8rem;}
+    .toc-grid{grid-template-columns:1fr;}
+    .def-grid{grid-template-columns:1fr;gap:0;}
+    .def-term{border-bottom:none;padding-bottom:0;font-size:0.75rem;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-badge">CS0-003 CERTIFICATION PREP</div>
+  <h1>CompTIA <span>CySA+</span> Study Guide</h1>
+  <p class="subtitle">SYNTHESIZED FROM STAR V LEARNING CENTERS COURSE MATERIALS · JACKSONVILLE, FL</p>
+  <div class="header-stats">
+    <span class="stat-pill"><strong>13</strong> Chapters</span>
+    <span class="stat-pill"><strong>4</strong> Exam Domains</span>
+    <span class="stat-pill">Exam <strong>CS0-003</strong></span>
+    <span class="stat-pill">Max <strong>85 Questions · 165 Min · Pass 750</strong></span>
+  </div>
+</header>
+
+<div class="container">
+
+  <nav class="toc-nav">
+    <h2>// Table of Contents</h2>
+    <div class="toc-grid">
+      <a class="toc-item" href="#ch01"><span class="toc-num">CH 01</span> Today's Cybersecurity Analyst</a>
+      <a class="toc-item" href="#ch02"><span class="toc-num">CH 02</span> System and Network Architecture</a>
+      <a class="toc-item" href="#ch03"><span class="toc-num">CH 03</span> Malicious Activity</a>
+      <a class="toc-item" href="#ch04"><span class="toc-num">CH 04</span> Threat Intelligence</a>
+      <a class="toc-item" href="#ch05"><span class="toc-num">CH 05</span> Reconnaissance &amp; Intelligence Gathering</a>
+      <a class="toc-item" href="#ch06"><span class="toc-num">CH 06</span> Designing a Vulnerability Management Program</a>
+      <a class="toc-item" href="#ch07"><span class="toc-num">CH 07</span> Vulnerability Management</a>
+      <a class="toc-item" href="#ch08"><span class="toc-num">CH 08</span> Analyzing Vulnerability Scans</a>
+      <a class="toc-item" href="#ch09"><span class="toc-num">CH 09</span> Building an Incident Response Program</a>
+      <a class="toc-item" href="#ch10"><span class="toc-num">CH 10</span> Incident Detection and Analysis</a>
+      <a class="toc-item" href="#ch11"><span class="toc-num">CH 11</span> Containment, Eradication &amp; Recovery</a>
+      <a class="toc-item" href="#ch12"><span class="toc-num">CH 12</span> Reporting and Communication</a>
+      <a class="toc-item" href="#ch13"><span class="toc-num">CH 13</span> Performing Forensic Analysis</a>
+    </div>
+  </nav>
+
+  <div class="domain-weights">
+    <h2>// Exam Domain Weights (CS0-003)</h2>
+    <div class="weight-row"><span class="weight-label">1.0 Security Operations</span><div class="weight-bar-bg"><div class="weight-bar" style="width:33%;background:var(--accent)"></div></div><span class="weight-pct" style="color:var(--accent)">33%</span></div>
+    <div class="weight-row"><span class="weight-label">2.0 Vulnerability Management</span><div class="weight-bar-bg"><div class="weight-bar" style="width:30%;background:var(--accent2)"></div></div><span class="weight-pct" style="color:var(--accent2)">30%</span></div>
+    <div class="weight-row"><span class="weight-label">3.0 Incident Response and Management</span><div class="weight-bar-bg"><div class="weight-bar" style="width:20%;background:var(--accent4)"></div></div><span class="weight-pct" style="color:var(--accent4)">20%</span></div>
+    <div class="weight-row"><span class="weight-label">4.0 Reporting and Communication</span><div class="weight-bar-bg"><div class="weight-bar" style="width:17%;background:var(--accent3)"></div></div><span class="weight-pct" style="color:var(--accent3)">17%</span></div>
+    <div class="callout callout-exam" style="margin-top:1rem;">Security Operations is the largest domain at 33%. Combined with Vulnerability Management (30%) these two domains make up 63% of the exam. Spend the most preparation time here.</div>
+  </div>
+
+  <!-- ═══ CH01 – TODAY'S CYBERSECURITY ANALYST ═══ -->
+  <section class="chapter" id="ch01">
+    <div class="chapter-header"><span class="chapter-num">CH 01</span><h2 class="chapter-title">Today's Cybersecurity Analyst</h2><span class="chapter-obj">Obj 1.5 · 2.1</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Privacy vs. Security</div>
+        <div class="def-grid">
+          <span class="def-term">Privacy</span><span class="def-val">The right of individuals to control how their personal information is collected, used, and shared. Focused on the individual's rights and expectations.</span>
+          <span class="def-term">Security</span><span class="def-val">The protection of systems, data, and assets from unauthorized access or harm. Focused on organizational controls and technical safeguards.</span>
+          <span class="def-term">Relationship</span><span class="def-val">Security is a prerequisite for privacy — you cannot have privacy without security. But security alone does not guarantee privacy. An organization can be technically secure while still violating privacy by misusing data it legally holds.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Generally Accepted Privacy Principles (GAPP)</div>
+        <div class="def-grid">
+          <span class="def-term">1. Management</span><span class="def-val">The organization documents its privacy practices in a privacy policy and related documents.</span>
+          <span class="def-term">2. Notice</span><span class="def-val">The organization notifies individuals about its privacy practices — what it collects and how it is used.</span>
+          <span class="def-term">3. Choice and Consent</span><span class="def-val">The organization obtains direct consent of individuals for the storage, use, and sharing of PII.</span>
+          <span class="def-term">4. Collection</span><span class="def-val">PII is collected only for the purposes identified in the notice and consented to by the individual.</span>
+          <span class="def-term">5. Use, Retention, and Disposal</span><span class="def-val">Information is only used for identified purposes. Information collected for one purpose may not be used for another nondisclosed purpose.</span>
+          <span class="def-term">6. Access</span><span class="def-val">Individuals are provided access to any information the organization holds about them, upon request.</span>
+          <span class="def-term">7. Disclosure</span><span class="def-val">Information will be disclosed to third parties only when consistent with notice and consent.</span>
+          <span class="def-term">8. Security</span><span class="def-val">PII will be protected against unauthorized access.</span>
+          <span class="def-term">9. Quality</span><span class="def-val">The organization will maintain accurate and complete information.</span>
+          <span class="def-term">10. Monitoring and Enforcement</span><span class="def-val">Business processes are in place to ensure compliance with the privacy policy.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Risk Assessment (NIST SP 800-30)</div>
+        <div class="def-grid">
+          <span class="def-term">Threat</span><span class="def-val">An outside force that may exploit a vulnerability. Can be adversarial, accidental, structural, or environmental.</span>
+          <span class="def-term">Vulnerability</span><span class="def-val">A weakness that might allow an attack to take place.</span>
+          <span class="def-term">Risk</span><span class="def-val">The combination of a threat and a corresponding vulnerability. Risk = Probability × Impact (magnitude).</span>
+          <span class="def-term">Adversarial Threats</span><span class="def-val">Individuals, groups, and organizations deliberately trying to undermine security. Analysts assess capability, intent, and likelihood of targeting.</span>
+          <span class="def-term">Accidental Threats</span><span class="def-val">Individuals doing routine work who mistakenly perform an action that undermines security. Consider the range of effects.</span>
+          <span class="def-term">Structural Threats</span><span class="def-val">Equipment, software, or environmental controls failing due to resource exhaustion or age. Consider the range of effects.</span>
+          <span class="def-term">Environmental Threats</span><span class="def-val">Natural or man-made disasters outside organizational control. Consider common threats to your geographic region.</span>
+          <span class="def-term">Qualitative Assessment</span><span class="def-val">Uses subjective ratings (Low/Medium/High) rather than financial figures. Results in a risk matrix. More practical than quantitative. Testable on exam.</span>
+          <span class="def-term">Quantitative Assessment</span><span class="def-val">Uses financial figures and statistical analysis (ALE = ARO × SLE). More precise but harder to implement. Not directly testable on CS0-003.</span>
+        </div>
+        <div class="callout callout-exam">The exam explicitly notes: Qualitative = testable. Quantitative = not directly testable on CS0-003. Know the qualitative risk matrix — probability vs. magnitude grid where Risk = Probability × Magnitude.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Network Access Control (NAC)</div>
+        <div class="def-grid">
+          <span class="def-term">NAC Purpose</span><span class="def-val">Controls which devices can connect to the network. Checks device posture (AV status, patch level, encryption, domain membership) before granting access. Non-compliant devices are quarantined or given limited access.</span>
+          <span class="def-term">802.1X</span><span class="def-val">The IEEE standard for port-based network access control. Three roles: Supplicant (device trying to connect), Authenticator (switch or WAP), Authentication Server (RADIUS). Device cannot access the network until RADIUS approves it.</span>
+          <span class="def-term">RADIUS</span><span class="def-val">Remote Authentication Dial-In User Service. Authentication, Authorization, and Accounting (AAA) server. Used by 802.1X NAC deployments. Communicates between the authenticator and the identity/authentication store.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Firewall Types</div>
+        <div class="def-grid">
+          <span class="def-term">Packet Filtering</span><span class="def-val">Checks packet characteristics (IP, port, protocol) against rules. No state tracking. Basic and fast. Found in routers and simple network devices. Easily bypassed by spoofing and fragmentation.</span>
+          <span class="def-term">Stateful Inspection</span><span class="def-val">Tracks the state of network connections. Maintains a state table. Can determine if packets are part of a legitimate established session. Most basic stand-alone commercial firewalls.</span>
+          <span class="def-term">NGFW (Next-Generation Firewall)</span><span class="def-val">Incorporates application awareness, user identity, deep packet inspection, and built-in IPS. Current state-of-the-art for network perimeter protection.</span>
+          <span class="def-term">WAF (Web Application Firewall)</span><span class="def-val">Specialized firewall protecting against web application attacks — SQLi, XSS, CSRF. Operates at Layer 7. Understands HTTP/HTTPS traffic.</span>
+          <span class="def-term">Triple-Homed Firewall</span><span class="def-val">Firewall with three network interfaces — internal, external (internet), and DMZ. Allows traffic to the DMZ from the internet without exposing the internal network.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Honeypots, DNS Sinkholes & Network Segmentation</div>
+        <div class="def-grid">
+          <span class="def-term">Honeypot</span><span class="def-val">Decoy system designed to attract attackers. Appears to be a legitimate, valuable target. Heavily monitored — captures attacker TTPs, tools, and behaviors. Used to feed threat intelligence and network blacklists. Isolated from production systems.</span>
+          <span class="def-term">Honeynet</span><span class="def-val">A network of honeypots that simulates an entire enterprise environment to attract and study sophisticated attackers.</span>
+          <span class="def-term">DNS Sinkhole</span><span class="def-val">Detects suspicious DNS requests (typically from botnet-infected systems reaching out to C2 servers) and responds with the IP address of a sinkhole system. The sinkhole detects and can remediate or isolate infected systems. Effective for identifying compromised hosts.</span>
+          <span class="def-term">Network Segmentation</span><span class="def-val">Divides a network into zones to limit lateral movement and contain breaches. High-value assets (servers, databases) should be in separate segments from user workstations. VLANs, subnets, and firewalls enforce segmentation.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Endpoint Security & Penetration Testing</div>
+        <div class="def-grid">
+          <span class="def-term">Endpoint Hardening</span><span class="def-val">Reducing the attack surface of individual devices. Common practices: patch management, remove unnecessary software, restrict admin rights, enable full-disk encryption, deploy host-based firewall, configure application whitelisting, and use EDR.</span>
+          <span class="def-term">Group Policy (GPO)</span><span class="def-val">Windows Active Directory mechanism to enforce security settings across many computers simultaneously. Can enforce firewall rules, software restrictions, password policies, and more.</span>
+          <span class="def-term">Pen Test — Planning Phase</span><span class="def-val">Administrative groundwork. No technical work performed. Three key rules of engagement: Timing (when and will staff be notified?), Scope (what is in/out of scope?), Authorization (who is authorizing it? What happens if confronted?).</span>
+          <span class="def-term">Pen Test — Attack Phase</span><span class="def-val">Active exploitation of identified vulnerabilities. Use only techniques and tools within the agreed scope. Document all actions taken for the final report.</span>
+          <span class="def-term">Reverse Engineering</span><span class="def-val">Analyzing software or hardware without access to source code or design documentation. Used to discover vulnerabilities, analyze malware, and understand undocumented system behaviors. Classified as static analysis technique in vulnerability scanning context.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Machine Learning & Automation in Security</div>
+        <div class="def-grid">
+          <span class="def-term">ML in Security</span><span class="def-val">Automatically extracts knowledge from large volumes of security data. Reduces requirements for human analysts to manually sift through alerts. Guides analysts toward productive work by surfacing high-probability threats. Used in UEBA (User and Entity Behavior Analytics), SIEM correlation, and EDR.</span>
+          <span class="def-term">Efficiency Principles</span><span class="def-val">Standardize processes: identify tasks suitable for automation (repeatable, no human interaction needed), coordinate team to facilitate automation. Streamline operations: use SOAR, orchestrate threat intelligence data enrichment, minimize human engagement in routine tasks.</span>
+          <span class="def-term">Single Pane of Glass</span><span class="def-val">Consolidated security dashboard showing all security tool data in one interface. Reduces alert fatigue and enables faster correlation. Typically implemented via SIEM. Objective 1.5 explicitly tests this concept.</span>
+          <span class="def-term">Tool Integration</span><span class="def-val">APIs (Application Programming Interfaces) allow different security tools to share data programmatically. Webhooks send event-driven notifications. Plugins extend tool functionality.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH02 – SYSTEM AND NETWORK ARCHITECTURE ═══ -->
+  <section class="chapter" id="ch02">
+    <div class="chapter-header"><span class="chapter-num">CH 02</span><h2 class="chapter-title">System and Network Architecture</h2><span class="chapter-obj">Obj 1.1</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Cloud Service Models</div>
+        <table class="data-table">
+          <thead><tr><th>Model</th><th>What Customer Manages</th><th>What Provider Manages</th><th>Examples</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">SaaS</span></td><td>Data, user access</td><td>Everything else — app, platform, infrastructure</td><td>Office 365, Salesforce, Gmail</td></tr>
+            <tr><td><span class="hl-gold">PaaS</span></td><td>Applications, data</td><td>Runtime, middleware, OS, virtualization, hardware</td><td>AWS Elastic Beanstalk, Azure App Service</td></tr>
+            <tr><td><span class="hl-gold">IaaS</span></td><td>OS, middleware, runtime, applications, data</td><td>Virtualization, servers, storage, networking</td><td>AWS EC2, Azure VMs, GCP Compute Engine</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Cloud Deployment Models</div>
+        <div class="def-grid">
+          <span class="def-term">Public Cloud</span><span class="def-val">Infrastructure provisioned for any customer in a multitenant environment. Managed and operated by a CSP. Lowest cost but least control.</span>
+          <span class="def-term">Private Cloud</span><span class="def-val">Provisioned for use by a single organization. May be on-premises or hosted by a provider. Highest control and customization.</span>
+          <span class="def-term">Community Cloud</span><span class="def-val">Multitenant but tenants are limited to members of a specific community (e.g., government agencies, healthcare organizations).</span>
+          <span class="def-term">Hybrid Cloud</span><span class="def-val">Blends public, private, and/or community cloud services. Data and applications can move between environments based on need.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Shared Responsibility Model</div>
+        <p>Security responsibilities are split between the cloud provider and the customer. The division shifts depending on the service model. The customer is always responsible for their data and access management regardless of service model. The provider is always responsible for physical infrastructure security. Everything in between depends on whether it's IaaS, PaaS, or SaaS.</p>
+        <div class="callout callout-exam">Misconfiguration is the #1 cause of cloud breaches — and under the shared responsibility model, configuration is almost always the customer's responsibility. If you misconfigure an S3 bucket or leave a security group open, that's on you, not AWS.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Modern Network Architecture</div>
+        <div class="def-grid">
+          <span class="def-term">Zero Trust</span><span class="def-val">Never trust, always verify. No implicit trust based on network location. Every user, device, and request must be authenticated and authorized regardless of whether they are inside or outside the perimeter. Uses microsegmentation, least privilege, and continuous validation.</span>
+          <span class="def-term">SASE (Secure Access Service Edge)</span><span class="def-val">Converges SD-WAN with cloud-delivered security services. Combines CASB, Zero Trust network access (ZTNA), SWG (Secure Web Gateway), FWaaS (Firewall as a Service), and more into a single cloud-native platform. Identity-centric rather than perimeter-centric.</span>
+          <span class="def-term">SDN (Software-Defined Networking)</span><span class="def-val">Relies on software/code to define and manage the network. Decouples the control plane from the data plane. Centralized controller manages all traffic decisions. Enables programmable, consistent network policy enforcement.</span>
+          <span class="def-term">Network Segmentation</span><span class="def-val">Divides the network into distinct zones to limit lateral movement. Uses VLANs, subnets, and firewalls. DMZ isolates public-facing services. Microsegmentation applies policies at the individual workload level.</span>
+          <span class="def-term">On-Premises</span><span class="def-val">Infrastructure physically located and managed within the organization's own facilities. Full control but highest cost and maintenance burden.</span>
+          <span class="def-term">Hybrid Architecture</span><span class="def-val">Mix of on-premises and cloud resources. Common in enterprises transitioning to cloud. Introduces complexity in security policy enforcement and monitoring.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Infrastructure as Code (IaC)</div>
+        <div class="def-grid">
+          <span class="def-term">IaC Definition</span><span class="def-val">Provisioning and managing infrastructure through machine-readable configuration files rather than manual processes. Examples: Terraform, CloudFormation, Ansible.</span>
+          <span class="def-term">Security Benefits</span><span class="def-val">Increases reusability of code. Increases speed of infrastructure creation. Reduces likelihood of configuration errors by leveraging common templates. Creates an auditable, version-controlled record of infrastructure state.</span>
+          <span class="def-term">Security Risks</span><span class="def-val">Hardcoded credentials in IaC files. Misconfigured templates replicated at scale. Secrets stored in version control. Use secrets managers, not IaC files, for sensitive credentials.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Identity and Access Management</div>
+        <div class="def-grid">
+          <span class="def-term">MFA</span><span class="def-val">Multi-Factor Authentication. Requires two or more factors from different categories: something you know, something you have, something you are. Significantly reduces credential-based attacks. TOTP apps more secure than SMS.</span>
+          <span class="def-term">SSO</span><span class="def-val">Single Sign-On. One authentication event grants access to multiple systems. Reduces password fatigue and credential sprawl. Kerberos implements SSO in Active Directory. SAML and OAuth enable federated SSO across organizations.</span>
+          <span class="def-term">Federation</span><span class="def-val">Extends SSO across organizational boundaries. Enables "login with Google/Microsoft/GitHub." Identity Provider (IdP) authenticates; Service Provider (SP) trusts that assertion. Key technologies: SAML, OAuth 2.0, OpenID Connect.</span>
+          <span class="def-term">PAM (Privileged Access Management)</span><span class="def-val">Technologies and practices managing and securing privileged accounts. Relies on least privilege. Addresses over-provisioning, privilege creep (retaining access as roles change), embedded credentials, and similar issues. Includes password vaulting, JIT access, and PAWs (Privileged Access Workstations).</span>
+          <span class="def-term">Passwordless</span><span class="def-val">Authentication without a password. Uses a single factor designed to be more secure than a password — USB token, authenticator app, biometric. Unlike MFA, relies on one more-secure factor rather than two weaker ones.</span>
+          <span class="def-term">CASB</span><span class="def-val">Cloud Access Security Broker. Policy enforcement points between users and cloud applications. Provides visibility, data security, threat protection, and compliance. Inline CASB sits in the traffic path. API-based CASB connects via cloud APIs.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">OS Concepts and System Hardening</div>
+        <div class="def-grid">
+          <span class="def-term">Windows Registry</span><span class="def-val">Database containing Windows system settings. Key root keys: HKEY_LOCAL_MACHINE (HKLM) — system info, scheduled tasks, services. HKEY_CURRENT_USER (HKCU) — logged-in user settings. HKEY_CLASSES_ROOT (HKCR) — COM registrations. HKEY_USERS — all user accounts. HKEY_CURRENT_CONFIG — deprecated hardware info.</span>
+          <span class="def-term">System Hardening</span><span class="def-val">Reducing the attack surface of systems. Common practices: update and patch, remove unnecessary software and services, restrict/log administrative access, control account creation, enable logging and monitoring, use disk encryption and Secure Boot.</span>
+          <span class="def-term">File Structure / Config Locations</span><span class="def-val">Windows: settings in Registry, C:\ProgramData\, C:\Program Files\, and user AppData. Linux: /etc/ for system-wide config. macOS: ~/Library/Preferences and /Library/Preferences.</span>
+          <span class="def-term">Hardware Architecture Impact</span><span class="def-val">Most servers use x86 (Intel/AMD). Growing number of ARM-based systems. Malware compiled for x86 will not run on ARM. This means some threats are architecture-specific — important consideration in threat analysis.</span>
+          <span class="def-term">Log Ingestion</span><span class="def-val">Time synchronization (NTP) is critical — logs from different systems must have synchronized timestamps to enable correlation. Logging levels determine how much is captured — verbose logging provides more detail but increases storage and processing requirements.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Infrastructure Concepts: Serverless, VMs, Containers</div>
+        <div class="def-grid">
+          <span class="def-term">Serverless (FaaS)</span><span class="def-val">Function as a Service. Code runs in stateless, ephemeral functions. Provider manages all infrastructure. Examples: AWS Lambda, Azure Functions, Google App Engine. Security shifts to function code, IAM permissions, and event triggers.</span>
+          <span class="def-term">Virtualization</span><span class="def-val">Multiple VMs running on shared hardware, each with its own OS. Strong isolation. Hypervisor manages resource allocation. Vulnerabilities: VM escape, hypervisor attacks, noisy neighbor issues.</span>
+          <span class="def-term">Containerization</span><span class="def-val">Application-level virtualization. Containers package apps and dependencies. Share the host OS kernel — no guest OS. Faster and lighter than VMs. Weaker isolation — kernel compromise affects all containers. Docker, Kubernetes.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Encryption and Data Protection</div>
+        <div class="def-grid">
+          <span class="def-term">PKI</span><span class="def-val">Public Key Infrastructure. System of CAs, certificates, and processes for managing asymmetric key pairs. Enables HTTPS, email signing/encryption, code signing, and mutual TLS. Certificate lifecycle: enrollment → issue → use → expire/revoke.</span>
+          <span class="def-term">SSL Inspection (TLS Inspection)</span><span class="def-val">Process by which security devices (NGFWs, proxies) decrypt, inspect, and re-encrypt TLS traffic to detect threats hidden inside HTTPS. Requires installing the inspection device's CA certificate on client devices. Raises privacy concerns.</span>
+          <span class="def-term">DLP (Data Loss Prevention)</span><span class="def-val">Monitors and controls data movement to prevent unauthorized exfiltration. Can block emails, file transfers, or USB copies of sensitive data. Network DLP inspects traffic; endpoint DLP monitors local actions.</span>
+          <span class="def-term">PII</span><span class="def-val">Personally Identifiable Information. Any data that can identify an individual. Protected by GDPR, CCPA, HIPAA, and other regulations. Examples: name, SSN, email, IP address, biometrics.</span>
+          <span class="def-term">CHD (Cardholder Data)</span><span class="def-val">Credit/debit card data (PAN, cardholder name, expiration, CVV). Regulated by PCI DSS. Must be protected and minimized.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH03 – MALICIOUS ACTIVITY ═══ -->
+  <section class="chapter" id="ch03">
+    <div class="chapter-header"><span class="chapter-num">CH 03</span><h2 class="chapter-title">Malicious Activity</h2><span class="chapter-obj">Obj 1.2 · 1.3</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Network Indicators of Malicious Activity</div>
+        <div class="def-grid">
+          <span class="def-term">Beaconing</span><span class="def-val">Infected host periodically sends traffic to a C2 (Command and Control) server. Regular, predictable intervals. Often HTTP/HTTPS to blend with normal traffic. Can request commands, provide status, or download additional malware. Detected via IDS/IPS rules, traffic analysis, and anomaly detection.</span>
+          <span class="def-term">Bandwidth Consumption</span><span class="def-val">Unusually high traffic volume. May indicate data exfiltration, DDoS participation, or malware activity. Detected using flow data (PRTG, NetFlow), SNMP monitoring, and threshold alerting.</span>
+          <span class="def-term">Irregular Peer-to-Peer</span><span class="def-val">Traffic between systems that don't normally communicate directly. May indicate lateral movement, botnet communication, or unauthorized data sharing.</span>
+          <span class="def-term">Rogue Devices</span><span class="def-val">Unauthorized devices on the network — rogue APs, unauthorized laptops, unknown IoT devices. Detected with network scanning, NAC, and wireless monitoring.</span>
+          <span class="def-term">Scans/Sweeps</span><span class="def-val">ICMP sweeps, port scans, service enumeration. Reconnaissance activity. Often precedes an attack. Detected via IDS/IPS and log analysis.</span>
+          <span class="def-term">Unusual Traffic Spikes</span><span class="def-val">Sudden increases in traffic volume or connection count. Could indicate DoS attack, exfiltration, or malware spreading.</span>
+          <span class="def-term">Activity on Unexpected Ports</span><span class="def-val">Services running on non-standard ports. Malware often communicates on unusual ports to evade detection, or hijacks legitimate ports for C2.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Host Indicators of Malicious Activity</div>
+        <div class="def-grid">
+          <span class="def-term">Processor/Memory Consumption</span><span class="def-val">Unexpectedly high CPU or RAM usage. Malware (cryptomining, botnets) often consumes significant resources. Monitor with top, ps, Task Manager, Resource Monitor, Performance Monitor.</span>
+          <span class="def-term">Drive Capacity</span><span class="def-val">Unexpected disk usage growth. Malware may cache data, store payloads, or fill disks as a DoS tactic.</span>
+          <span class="def-term">Unauthorized Software</span><span class="def-val">Applications installed without authorization. Detected via software inventory, application whitelisting, and MDM.</span>
+          <span class="def-term">Malicious Processes</span><span class="def-val">Running processes not associated with known legitimate software. Hidden processes (rootkits). Processes with names designed to mimic legitimate system processes.</span>
+          <span class="def-term">Unauthorized Changes</span><span class="def-val">Modifications to system files, configuration, or scheduled tasks not initiated by authorized change management.</span>
+          <span class="def-term">Unauthorized Privileges</span><span class="def-val">Account privileges escalated beyond their authorization. New admin accounts created. Group memberships modified.</span>
+          <span class="def-term">Data Exfiltration</span><span class="def-val">Large volumes of data being transferred outbound. Sensitive files being accessed at unusual times or volumes. Detected via DLP, SIEM, and NetFlow analysis.</span>
+          <span class="def-term">File System Changes/Anomalies</span><span class="def-val">New files appearing in unusual locations. System file modifications. Encryption of files (ransomware indicator). Detected with file integrity monitoring (FIM) and SIEM.</span>
+          <span class="def-term">Registry Changes</span><span class="def-val">Persistence mechanisms often added to registry run keys: HKLM\Software\Microsoft\Windows\CurrentVersion\Run and HKCU equivalents. Unauthorized changes indicate potential compromise.</span>
+          <span class="def-term">Unauthorized Scheduled Tasks</span><span class="def-val">Malware commonly creates scheduled tasks for persistence or to execute payloads periodically. Review schtasks (Windows) or crontab (Linux) for unauthorized entries.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">DoS & DDoS</div>
+        <div class="def-grid">
+          <span class="def-term">DoS Patterns</span><span class="def-val">Overwhelming a network or service with volume (volumetric). Attacking specific vulnerabilities to cause failure (protocol or application layer). Attacking intermediary systems to block traffic between two locations.</span>
+          <span class="def-term">DDoS</span><span class="def-val">Distributed — attacks originate from many systems/networks simultaneously. Harder to detect the source. Harder to stop. Often uses botnets of compromised devices. Detection: traffic analysis, rate limiting, anomaly detection.</span>
+          <span class="def-term">Cloud-Based DDoS Mitigation</span><span class="def-val">Scrubbing centers absorb and filter attack traffic before it reaches the organization. Examples: Cloudflare, Akamai, AWS Shield. Traffic is routed through the mitigation service during an attack.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Detection Tools</div>
+        <div class="def-grid">
+          <span class="def-term">SIEM</span><span class="def-val">Security Information and Event Management. Centralizes log collection from all sources. Applies correlation rules to identify patterns across disparate events. Generates alerts. Provides dashboards and reports. Examples: Splunk, Graylog, ELK Stack, IBM QRadar.</span>
+          <span class="def-term">SOAR</span><span class="def-val">Security Orchestration, Automation, and Response. Integrates security tools via APIs. Executes playbooks automatically when specific triggers occur. Automates routine response tasks. Reduces mean time to respond (MTTR). Incident management and reporting built in.</span>
+          <span class="def-term">EDR</span><span class="def-val">Endpoint Detection and Response. Agent deployed on endpoints. Focuses on threat behavior patterns. Automatically responds to neutralize threats or notify admins. Data used in incident response. Examples: CrowdStrike, Carbon Black, Microsoft Defender for Endpoint.</span>
+          <span class="def-term">XDR</span><span class="def-val">Extended Detection and Response. Extends EDR beyond endpoints to include network, cloud, email, and identity data. Unified detection and response across the entire attack surface. Next evolution beyond EDR.</span>
+          <span class="def-term">Wireshark</span><span class="def-val">GUI packet analyzer. Deep protocol dissection. Opens .pcap files. Filter syntax: <code>ip.addr == 192.168.1.1</code>, <code>tcp.port == 443</code>, <code>http</code>. Essential for manual traffic analysis.</span>
+          <span class="def-term">tcpdump</span><span class="def-val">CLI packet capture. Most common packet capture tool on Linux servers. <code>tcpdump -i eth0 port 53</code> captures DNS. <code>-w file.pcap</code> saves for Wireshark analysis.</span>
+          <span class="def-term">WHOIS</span><span class="def-val">Queries domain registration and ownership information. Useful for attribution and identifying malicious domains.</span>
+          <span class="def-term">AbuseIPDB</span><span class="def-val">IP and domain reputation service. Lists IPs involved in malicious activities. Check suspicious source IPs against this database during incident response.</span>
+          <span class="def-term">VirusTotal</span><span class="def-val">Submit files, hashes, URLs for multi-engine malware analysis. Aggregates results from 70+ AV engines. Used for file analysis and malware identification.</span>
+          <span class="def-term">Strings</span><span class="def-val">Command-line tool that extracts printable strings from binary files. Quick analysis without executing the file. Can reveal embedded URLs, file paths, registry keys, and other indicators.</span>
+          <span class="def-term">Joe Sandbox / Cuckoo</span><span class="def-val">Automated malware sandboxes. Execute suspicious files in an isolated, heavily instrumented environment. Capture all system calls, network traffic, file changes, and registry modifications. Safe analysis of potentially destructive malware.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Email Analysis</div>
+        <div class="def-grid">
+          <span class="def-term">Email Header Analysis</span><span class="def-val">Headers reveal the true path an email traveled. Check: Received-from chain (tracing actual sending servers), X-Originating-IP, Return-Path vs From address. Headers can be forged but the Received chain is harder to fake.</span>
+          <span class="def-term">SPF (Sender Policy Framework)</span><span class="def-val">DNS TXT record listing authorized mail servers for a domain. Receiving server checks if the sending IP is on the list. Prevents spoofing of the MAIL FROM address.</span>
+          <span class="def-term">DKIM (DomainKeys Identified Mail)</span><span class="def-val">Adds a cryptographic digital signature to email headers. Receiving server verifies signature using the sender's public key published in DNS. Proves the email was actually sent by the domain and was not tampered with in transit.</span>
+          <span class="def-term">DMARC</span><span class="def-val">Domain-based Message Authentication, Reporting, and Conformance. Builds on SPF and DKIM. Specifies what to do if messages fail SPF/DKIM checks (none, quarantine, reject). Provides reporting back to the domain owner. Essential for protecting against email spoofing.</span>
+          <span class="def-term">Impersonation / Phishing</span><span class="def-val">Email appearing to be from a trusted source. Look for: display name vs actual email address mismatch, slightly misspelled domains (typosquatting), obfuscated or shortened URLs, urgency language, unexpected attachments.</span>
+          <span class="def-term">Embedded Links</span><span class="def-val">Hover over links to see actual destination before clicking. Obfuscated URLs redirect to malicious sites. QR codes in emails can bypass URL scanning.</span>
+        </div>
+        <div class="callout callout-exam">SPF, DKIM, and DMARC work together. SPF = authorized sending IPs. DKIM = cryptographic signature proving the domain sent it. DMARC = policy for what to do when SPF or DKIM fail AND reporting. All three are needed for comprehensive email authentication. Know what each one protects against.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Network Monitoring Methods</div>
+        <div class="def-grid">
+          <span class="def-term">Active Monitoring</span><span class="def-val">Sends traffic to test or measure network behavior. Examples: ICMP ping, iPerf bandwidth testing. Adds traffic to the network. Provides real-time measurements. Can establish performance baselines.</span>
+          <span class="def-term">Passive Monitoring</span><span class="def-val">Captures and analyzes traffic without adding traffic to the network. Provides a detailed view of actual traffic content and behavior. After-the-fact analysis since packets must be captured first. Examples: tcpdump, Wireshark, IDS in promiscuous mode.</span>
+          <span class="def-term">Router-Based Monitoring</span><span class="def-val">Uses NetFlow, RMON, or SNMP to collect traffic statistics from routers and switches. NetFlow provides flow-level metadata (IP pairs, ports, volumes) without capturing packet contents. Lower overhead than full packet capture.</span>
+          <span class="def-term">NetFlow / IPFIX</span><span class="def-val">Network traffic metadata — source/dest IP, port, protocol, byte count, packet count, timestamps. Does NOT capture payload. Used to detect anomalies and large data transfers without full packet capture overhead.</span>
+          <span class="def-term">SNMP</span><span class="def-val">Simple Network Management Protocol. Polls network devices for interface statistics, error counts, CPU/memory utilization. Port 161 (queries), 162 (traps). Used for bandwidth monitoring and device health alerts.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH04 – THREAT INTELLIGENCE ═══ -->
+  <section class="chapter" id="ch04">
+    <div class="chapter-header"><span class="chapter-num">CH 04</span><h2 class="chapter-title">Threat Intelligence</h2><span class="chapter-obj">Obj 1.4</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">The Intelligence Cycle</div>
+        <div class="ts-steps">
+          <div class="ts-step"><strong>Requirements Gathering.</strong> Identify what intelligence is needed. Assess past breaches, industry trends, and risk assessments. Determine what information could have prevented or limited past incidents.</div>
+          <div class="ts-step"><strong>Data Collection.</strong> Gather data from threat intelligence sources to meet requirements. May repeat as requirements are refined.</div>
+          <div class="ts-step"><strong>Processing and Analysis.</strong> Convert raw data into usable formats. Feed into automated tools or write reports. Analyze for relevance, accuracy, and actionability.</div>
+          <div class="ts-step"><strong>Dissemination.</strong> Distribute intelligence to leadership and operational personnel who will act on it.</div>
+          <div class="ts-step"><strong>Feedback.</strong> Gather feedback on the quality and usefulness of the intelligence produced. Use to improve requirements and the overall process. Continuous improvement is critical.</div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Intelligence Confidence Levels</div>
+        <div class="def-grid">
+          <span class="def-term">Timeliness</span><span class="def-val">How current is the intelligence? Older intelligence about threat actor TTPs may still be relevant if behavior hasn't changed, but information about active C2 infrastructure becomes stale quickly.</span>
+          <span class="def-term">Relevancy</span><span class="def-val">Does this intelligence apply to your organization, industry, or geography? Threat intelligence about attacks targeting industrial control systems in energy companies may not be relevant to a retail organization.</span>
+          <span class="def-term">Accuracy</span><span class="def-val">How reliable is the source? Has the information been corroborated by multiple independent sources? Consider the source's track record and methodology.</span>
+        </div>
+        <div class="callout callout-exam">The exam expects you to assess threat intelligence based on these three factors: timeliness, relevancy, and accuracy. Know why each matters. A piece of intelligence can be accurate but not timely (outdated), or timely but not relevant (different industry sector).</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Threat Actors</div>
+        <div class="def-grid">
+          <span class="def-term">APT (Advanced Persistent Threat)</span><span class="def-val">Sophisticated, well-resourced threat actor with long-term objectives. Typically nation-state or state-sponsored. Establishes persistent access and maintains it for months or years. Prioritizes stealth over speed. Examples: APT28 (Fancy Bear), Lazarus Group.</span>
+          <span class="def-term">Nation-State</span><span class="def-val">Government-sponsored hackers. Highest capability and resources. Objectives: espionage, sabotage of critical infrastructure, financial theft. Most sophisticated TTPs.</span>
+          <span class="def-term">Organized Crime</span><span class="def-val">Financially motivated criminal organizations. Common activities: ransomware, financial fraud, BEC (Business Email Compromise), credential theft. Often operate ransomware-as-a-service (RaaS) models.</span>
+          <span class="def-term">Hacktivists</span><span class="def-val">Motivated by ideology or political causes rather than financial gain. Use cyberattacks to promote their agenda. Tactics: DDoS, defacement, data leaks.</span>
+          <span class="def-term">Script Kiddie</span><span class="def-val">Low-skill attacker using pre-built tools and scripts without understanding how they work. Opportunistic. Targets easy vulnerabilities, not specific organizations.</span>
+          <span class="def-term">Insider Threat</span><span class="def-val">Malicious insider: deliberately undermines security for personal gain, revenge, or ideology. Unintentional insider: accidentally causes security incidents through negligence, social engineering, or mistakes. Both are significant risks. Detected via UEBA.</span>
+          <span class="def-term">Supply Chain</span><span class="def-val">Threat entering through a third-party vendor, software update, or hardware component. Compromising one supplier can provide access to thousands of targets. Examples: SolarWinds, XZ Utils backdoor, NotPetya (MeDoc software update).</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">TTPs — Tactics, Techniques, and Procedures</div>
+        <div class="def-grid">
+          <span class="def-term">TTPs</span><span class="def-val">The behavioral fingerprint of a threat actor. Tactics = high-level goals (what they want to achieve). Techniques = general methods used. Procedures = specific implementations of techniques. TTPs are used to identify, attribute, and track threat actors across incidents.</span>
+          <span class="def-term">MITRE ATT&amp;CK</span><span class="def-val">Comprehensive knowledge base of adversary tactics and techniques based on real-world observations. Organized into a matrix. Tactics are columns (Initial Access, Execution, Persistence, etc.). Techniques are rows within each tactic. Used for threat modeling, detection engineering, and red/blue team planning.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Intelligence Collection Sources</div>
+        <div class="two-col">
+          <div>
+            <p class="mini-h">Open Source (OSINT)</p>
+            <ul class="concept-list">
+              <li><strong>Social media</strong> — threat actor activity, leaked data, reconnaissance</li>
+              <li><strong>Blogs and forums</strong> — vulnerability disclosures, PoC code, TTPs</li>
+              <li><strong>Government bulletins</strong> — CISA advisories, FBI notifications, DHS alerts</li>
+              <li><strong>CERT/CSIRT</strong> — Computer Emergency Response Teams publish advisories on active threats and vulnerabilities</li>
+              <li><strong>Deep/Dark web</strong> — monitoring for leaked credentials, sale of exploits, threat actor communications</li>
+            </ul>
+          </div>
+          <div>
+            <p class="mini-h">Closed Source</p>
+            <ul class="concept-list">
+              <li><strong>Paid threat intelligence feeds</strong> — Recorded Future, Mandiant, CrowdStrike Falcon Intelligence. Higher quality, faster reporting, more actionable</li>
+              <li><strong>Information sharing organizations</strong> — ISACs (Information Sharing and Analysis Centers) for specific sectors (FS-ISAC, H-ISAC, E-ISAC). Share threat intelligence within trusted communities</li>
+              <li><strong>Internal sources</strong> — your own logs, incident history, honeypot data, SOC observations. Most relevant to your specific environment</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Uses of Threat Intelligence</div>
+        <div class="def-grid">
+          <span class="def-term">Incident Response</span><span class="def-val">Identify attackers and their TTPs during active incidents. Map observed behaviors to known threat actors. Guide containment and eradication strategies based on known actor behavior.</span>
+          <span class="def-term">Vulnerability Management</span><span class="def-val">Threat intelligence influences risk ratings. Vulnerabilities being actively exploited by known threat actors targeting your industry should be prioritized.</span>
+          <span class="def-term">Risk Management</span><span class="def-val">Inform risk assessments with up-to-date knowledge of the threat landscape. Change risk ratings as the threat environment evolves.</span>
+          <span class="def-term">Security Engineering</span><span class="def-val">Influence architectural designs based on threat models. Build defenses specifically against the TTPs used by likely threat actors.</span>
+          <span class="def-term">Detection and Monitoring</span><span class="def-val">Use IoCs from threat intel feeds to build detection rules in SIEM and IDS/IPS. Block known malicious IPs, domains, and hashes at the perimeter.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Threat Hunting</div>
+        <div class="def-grid">
+          <span class="def-term">Threat Hunting</span><span class="def-val">Proactive, human-driven search for threats that have evaded automated detection. Starts with a hypothesis based on threat intelligence or anomalous data. The hunter queries available data sources to prove or disprove the hypothesis. Different from passive monitoring — it's active searching.</span>
+          <span class="def-term">Focus Areas</span><span class="def-val">Configurations and misconfigurations (attackers frequently exploit these). Isolated or secured networks (unexpected activity here is high-priority). Business-critical assets and processes (highest value targets).</span>
+          <span class="def-term">Active Defense</span><span class="def-val">Responding to attacks as they occur. May involve deception — tarpits slow attackers and provide false data. Honeypots attract and monitor attackers. Active defense is more aggressive than purely reactive monitoring.</span>
+          <span class="def-term">IoC Collection, Analysis, Application</span><span class="def-val">Collection: gather data from tools, logs, and feeds. Analysis: determine if gathered data actually indicates compromise (context matters — unusual traffic may be legitimate). Application: trigger incident response when confirmed, or use as detection signatures going forward.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH05 – RECONNAISSANCE ═══ -->
+  <section class="chapter" id="ch05">
+    <div class="chapter-header"><span class="chapter-num">CH 05</span><h2 class="chapter-title">Reconnaissance & Intelligence Gathering</h2><span class="chapter-obj">Obj 2.1 · 2.2</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Passive Reconnaissance</div>
+        <div class="def-grid">
+          <span class="def-term">Passive Reconnaissance</span><span class="def-val">Gathering information without directly interacting with the target system. Uses publicly available data. Undetectable by the target. Examples: WHOIS lookups, DNS queries, reviewing public websites, job postings, social media, and Shodan.</span>
+          <span class="def-term">Log and Configuration Analysis</span><span class="def-val">If access to local system logs is available, they provide a treasure trove of information — user accounts, system configurations, network topology, application details, and security settings. Logs reveal how systems interact and what vulnerabilities may exist.</span>
+          <span class="def-term">OSINT Sources</span><span class="def-val">Google/search engines (site: and filetype: operators). Shodan (internet-connected device search engine). LinkedIn/social media (employee names, technologies). DNS records (MX, A, AAAA, TXT reveal infrastructure). Certificate Transparency logs (discover subdomains).</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Active Reconnaissance Tools</div>
+        <div class="def-grid">
+          <span class="def-term">nmap</span><span class="def-val">Most commonly used CLI port scanner. Free and open source. Capabilities: multiple scan modes (SYN, TCP connect, UDP, XMAS), OS fingerprinting, service/version detection, scripting engine (NSE). Basic usage: <code>nmap target</code>. Service detection: <code>nmap -sV target</code>. OS detection: <code>nmap -O target</code>.</span>
+          <span class="def-term">Angry IP Scanner</span><span class="def-val">Cross-platform GUI port scanner (Windows/Linux/macOS). Requires Java. Supports pluggable fetcher modules for additional data collection. Configure target ports under Preferences before scanning — no ports configured = no port data returned.</span>
+          <span class="def-term">Maltego</span><span class="def-val">Open-source intelligence gathering and link analysis tool. GUI-based. Builds relationship maps connecting people, domains, IPs, organizations, and other entities. Uses "transforms" to discover connections. Good for mapping an organization's external attack surface.</span>
+          <span class="def-term">Metasploit Framework (MSF)</span><span class="def-val">Penetration testing framework. Open source and commercial versions. Capabilities: port scanning (tcp, syn, wmap), service enumeration, vulnerability exploitation, payload delivery. In example: demonstrates SSH version detection capability.</span>
+          <span class="def-term">Recon-ng</span><span class="def-val">Web-based OSINT reconnaissance tool. Often paired with Kali Linux. Reduces time spent manually gathering from open resources. Modular framework with many modules for different data sources. Aggregates OSINT into a structured database.</span>
+          <span class="def-term">hping</span><span class="def-val">Advanced version of ping. Allows customization of echo requests. Can craft custom packets for more aggressive reconnaissance. Used to bypass some firewall rules and test specific network paths.</span>
+          <span class="def-term">Zenmap</span><span class="def-val">GUI front-end for nmap. Provides topology visualization of scanned networks — useful for understanding network layout and identifying devices that don't belong.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Port Scanning Concepts</div>
+        <div class="def-grid">
+          <span class="def-term">Well-Known Ports</span><span class="def-val">Ports 0–1023. Assigned to specific services by IANA. Examples: 22 (SSH), 80 (HTTP), 443 (HTTPS), 25 (SMTP), 53 (DNS), 3389 (RDP).</span>
+          <span class="def-term">Registered Ports</span><span class="def-val">Ports 1024–49151. Assigned by IANA on request for specific services. Examples: 3306 (MySQL), 5432 (PostgreSQL), 8080 (HTTP alternate), 27017 (MongoDB).</span>
+          <span class="def-term">Dynamic/Private Ports</span><span class="def-val">Ports 49152–65535. Used as ephemeral (temporary) source ports by client applications.</span>
+          <span class="def-term">Service/Version Identification</span><span class="def-val">Scanners can identify what service and version is running on a port by analyzing the response (banner grabbing). Knowing the exact version allows cross-referencing against vulnerability databases.</span>
+          <span class="def-term">OS Fingerprinting</span><span class="def-val">Analyzing TCP/IP stack behavior to identify the operating system. Based on subtle differences in how different OS implementations handle network packets. Useful for identifying targets and likely vulnerabilities.</span>
+          <span class="def-term">Enumeration</span><span class="def-val">Detailed information gathering after initial discovery. Gathers: OS details, network topology, valid usernames, machine names, share names, directory structures, web server details. Used to identify specific attack vectors.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH06 – VULNERABILITY MANAGEMENT PROGRAM ═══ -->
+  <section class="chapter" id="ch06">
+    <div class="chapter-header"><span class="chapter-num">CH 06</span><h2 class="chapter-title">Designing a Vulnerability Management Program</h2><span class="chapter-obj">Obj 2.1 · 2.2</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Vulnerability Scanning Types</div>
+        <div class="def-grid">
+          <span class="def-term">Active Scanning</span><span class="def-val">Directly interacts with scanned hosts. Sends probes and analyzes responses. More thorough detection of vulnerabilities. Disadvantages: generates detectable network traffic, can cause performance issues, may disrupt sensitive systems.</span>
+          <span class="def-term">Passive Scanning</span><span class="def-val">Monitors network traffic without sending probes. Like IDS monitoring. Advantages: invisible to targets, no performance impact. Disadvantages: only detects vulnerabilities reflected in network traffic — misses many issues.</span>
+          <span class="def-term">Credentialed Scanning</span><span class="def-val">Scanner authenticates to target systems and retrieves configuration data from the inside. More accurate than non-credentialed — can check actual installed versions, registry settings, and file permissions. Fewer false positives. Can access OS, databases, and applications.</span>
+          <span class="def-term">Non-Credentialed Scanning</span><span class="def-val">Tests systems from the outside without authentication. Simulates attacker perspective. Less accurate — more false positives. Cannot assess internal configuration. Good for testing what attackers can see.</span>
+          <span class="def-term">Agent-Based</span><span class="def-val">Software agent installed on target systems. Provides continuous monitoring and assessment. Works even when the system is off-network (laptops). No network exposure of credentials.</span>
+          <span class="def-term">Agentless</span><span class="def-val">Scans over the network without installed agents. Easier to deploy at scale. Depends on network connectivity and credentials. May miss offline or isolated systems.</span>
+          <span class="def-term">Internal Scanning</span><span class="def-val">Conducted from inside the network. Reveals what an attacker with internal access would see. Detects issues not visible from outside the firewall.</span>
+          <span class="def-term">External Scanning</span><span class="def-val">Conducted from outside the network. Reveals what an external attacker sees. Tests perimeter defenses and internet-exposed services.</span>
+          <span class="def-term">Static Analysis</span><span class="def-val">Analyzes software code or binary without executing it. Identifies vulnerabilities in source code. Part of SAST tools in SDLC.</span>
+          <span class="def-term">Dynamic Analysis</span><span class="def-val">Tests running applications. Includes reverse engineering (analyzing software without source code) and fuzzing (sending malformed/random input to find crashes).</span>
+        </div>
+        <div class="callout callout-exam">The exam expects you to know all these scanning types and when to use each: credentialed vs. non-credentialed, agent vs. agentless, internal vs. external, active vs. passive, static vs. dynamic. Be prepared for scenario questions asking which scan type is most appropriate for a given situation.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Scanning Considerations</div>
+        <div class="def-grid">
+          <span class="def-term">Scheduling</span><span class="def-val">Scans should be scheduled to minimize impact on production systems. Run during off-peak hours. Coordinate with system owners. PCI DSS requires quarterly scans plus scans after significant changes.</span>
+          <span class="def-term">Sensitivity Levels</span><span class="def-val">Safe scans minimize the risk of disrupting systems. More aggressive scans may trigger IDS/IPS or cause instability on fragile systems. Adjust sensitivity based on the criticality of target systems.</span>
+          <span class="def-term">Segmentation</span><span class="def-val">Scans should cover all network segments. Firewalls between segments may block scan traffic. Credentialed scans may require separate credentials per segment. Consider scan perspective from each segment.</span>
+          <span class="def-term">Regulatory Requirements</span><span class="def-val">PCI DSS requires quarterly internal and external scans. FISMA requires scans per NIST SP 800-53. Regulatory requirements may dictate scan frequency, scope, and vendor qualification requirements.</span>
+          <span class="def-term">Critical Infrastructure</span><span class="def-val">OT (Operational Technology), ICS (Industrial Control Systems), and SCADA systems require special handling. Aggressive scans can disrupt or physically damage these systems. Use passive scanning or carefully configured safe-mode active scanning.</span>
+          <span class="def-term">Plugin Management</span><span class="def-val">Each plugin checks for a specific vulnerability. Disable unnecessary plugins to improve scan speed and reduce false positives. Update plugins daily to ensure coverage of newly discovered vulnerabilities.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Vulnerability Management Lifecycle</div>
+        <div class="ts-steps">
+          <div class="ts-step"><strong>Asset Discovery.</strong> Identify all systems in scope. Use network scanners to find previously unknown systems. Build and maintain an asset inventory.</div>
+          <div class="ts-step"><strong>Vulnerability Scanning.</strong> Conduct scans per schedule and policy. Use appropriate scan type (credentialed, internal/external, agent-based as needed).</div>
+          <div class="ts-step"><strong>Prioritization.</strong> Score vulnerabilities using CVSS. Factor in asset value, exploitability, exposure, and threat intelligence. Create remediation priority queue.</div>
+          <div class="ts-step"><strong>Remediation.</strong> Apply patches, configuration changes, or compensating controls. Track remediation through to completion. Coordinate with system owners.</div>
+          <div class="ts-step"><strong>Verification.</strong> Re-scan after remediation to confirm vulnerabilities are resolved. Validate that patches were successfully applied.</div>
+          <div class="ts-step"><strong>Reporting and Documentation.</strong> Report results to stakeholders. Document exceptions and accepted risks. Update asset and vulnerability inventories.</div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Vulnerability Scanning Tools</div>
+        <div class="def-grid">
+          <span class="def-term">Nessus (Tenable)</span><span class="def-val">Industry-leading vulnerability scanner. Comprehensive plugin library. Regular automated updates. Available as Nessus Professional (commercial) and Nessus Essentials (free, limited). Configurable templates for common scan types. Automated email reporting.</span>
+          <span class="def-term">OpenVAS</span><span class="def-val">Open-source vulnerability scanner. Community-maintained plugin feed. Free alternative to commercial scanners. Integrated into Greenbone Vulnerability Manager (GVM). Comprehensive but requires more manual management.</span>
+          <span class="def-term">Qualys</span><span class="def-val">Cloud-based vulnerability management platform. Asset inventory, vulnerability scanning, compliance assessment. Dashboard provides high-level security posture view. Agent-based and agentless options.</span>
+          <span class="def-term">Nikto</span><span class="def-val">Open-source web application scanner. Tests for SQL injection, XSS, CSRF, and other web vulnerabilities. CLI-based. Fast and easy to use. Not as thorough as commercial web app scanners.</span>
+          <span class="def-term">Arachni</span><span class="def-val">Open-source web application security scanner. More comprehensive than Nikto. Supports multiple output formats. REST API for integration.</span>
+          <span class="def-term">OWASP ZAP (Zed Attack Proxy)</span><span class="def-val">Free and open-source web application security testing tool. Man-in-the-middle proxy. Active and passive scanning. Maintained by OWASP. Very widely used.</span>
+          <span class="def-term">Burp Suite</span><span class="def-val">Professional web application security testing platform. Proxy intercepts HTTP/HTTPS traffic. Active and passive scanner. Intruder for brute force. Repeater for manual testing. Industry standard for web app penetration testing.</span>
+          <span class="def-term">Scout Suite / Prowler / Pacu</span><span class="def-val">Cloud infrastructure security assessment tools. Scout Suite: multi-cloud (AWS, Azure, GCP) security auditing. Prowler: AWS security best practices. Pacu: AWS attack/exploitation framework. Used to assess cloud misconfigurations.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Compliance Frameworks</div>
+        <div class="def-grid">
+          <span class="def-term">PCI DSS</span><span class="def-val">Payment Card Industry Data Security Standard. Mandatory for merchants handling credit card transactions. Key scanning requirements: quarterly internal and external scans (requirement 11.2), scans after significant changes, use of approved scanning vendors (ASV) for external scans, qualified personnel for internal scans. Remediate all high vulnerabilities before passing.</span>
+          <span class="def-term">FISMA</span><span class="def-val">Federal Information Security Management Act. Applies to all federal information systems. Requires scanning per NIST SP 800-53 controls. Impact-based categorization: Low, Moderate, High. Higher impact = more stringent requirements.</span>
+          <span class="def-term">CIS Benchmarks</span><span class="def-val">Center for Internet Security. Prescriptive hardening guidelines for specific systems and applications. Used as security baselines. Scanner plugins check compliance against CIS benchmarks.</span>
+          <span class="def-term">OWASP</span><span class="def-val">Open Web Application Security Project. Provides the OWASP Top 10 (most critical web application security risks), testing guides, and development best practices. Not a regulatory standard but widely referenced.</span>
+          <span class="def-term">ISO 27000 Series</span><span class="def-val">International standard for Information Security Management Systems (ISMS). ISO 27001 certification requires third-party audit. ISO 27002 provides implementation guidance. Globally recognized framework for comprehensive security programs.</span>
+        </div>
+        <div class="callout callout-exam">The exam expects you to know the purpose and differences between PCI DSS, CIS Benchmarks, OWASP, and the ISO 27000 series. PCI DSS = payment card industry regulation. CIS = hardening benchmarks. OWASP = web application security best practices. ISO 27001 = ISMS certification standard.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH07 – VULNERABILITY MANAGEMENT ═══ -->
+  <section class="chapter" id="ch07">
+    <div class="chapter-header"><span class="chapter-num">CH 07</span><h2 class="chapter-title">Vulnerability Management</h2><span class="chapter-obj">Obj 2.1 · 2.3 · 2.4</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">CVSS — Common Vulnerability Scoring System</div>
+        <p>CVSS provides a standardized numeric score (0–10) representing the severity of a vulnerability. Higher = more severe. Scores: 0.0=None, 0.1–3.9=Low, 4.0–6.9=Medium, 7.0–8.9=High, 9.0–10.0=Critical.</p>
+        <table class="data-table">
+          <thead><tr><th>Metric</th><th>Options</th><th>What It Measures</th></tr></thead>
+          <tbody>
+            <tr><td><span class="hl-gold">Attack Vector (AV)</span></td><td>Network (N), Adjacent (A), Local (L), Physical (P)</td><td>How the attacker exploits the vulnerability. Network = remotely exploitable = highest score.</td></tr>
+            <tr><td><span class="hl-gold">Attack Complexity (AC)</span></td><td>Low (L), High (H)</td><td>Conditions beyond attacker control. Low = straightforward exploit.</td></tr>
+            <tr><td><span class="hl-gold">Privileges Required (PR)</span></td><td>None (N), Low (L), High (H)</td><td>Level of access attacker needs before exploiting. None = no auth required = higher score.</td></tr>
+            <tr><td><span class="hl-gold">User Interaction (UI)</span></td><td>None (N), Required (R)</td><td>Whether another person must take action. None = no user needed = higher score.</td></tr>
+            <tr><td><span class="hl-gold">Scope (S)</span></td><td>Unchanged (U), Changed (C)</td><td>Does the vulnerability affect components beyond its authorization scope? Changed = can impact other systems.</td></tr>
+            <tr><td><span class="hl-gold">Confidentiality (C)</span></td><td>None (N), Low (L), High (H)</td><td>Impact on confidentiality of information. High = complete loss of confidentiality.</td></tr>
+            <tr><td><span class="hl-gold">Integrity (I)</span></td><td>None (N), Low (L), High (H)</td><td>Impact on integrity of information. High = complete loss of integrity.</td></tr>
+            <tr><td><span class="hl-gold">Availability (A)</span></td><td>None (N), Low (L), High (H)</td><td>Impact on availability. High = complete loss of availability.</td></tr>
+          </tbody>
+        </table>
+        <p class="mini-h">CVSS Vector Example</p>
+        <p>CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N — Attack Vector Network, Complexity Low, No Privileges, No User Interaction, Scope Unchanged, Confidentiality High, Integrity None, Availability None. This represents a remotely exploitable vulnerability with no prerequisites that fully compromises confidentiality.</p>
+        <div class="callout callout-exam">Know how to interpret a CVSS vector string. The exam may show a vector and ask you to identify what it means or rank vulnerabilities by severity. AV:N (Network) + PR:N (No privileges) + UI:N (No interaction) = worst possible combination = high score. If Impact = 0, base score = 0 regardless of other metrics.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">CVSS Score Calculation</div>
+        <div class="def-grid">
+          <span class="def-term">ISS (Impact Sub-Score)</span><span class="def-val">Calculated from Confidentiality, Integrity, and Availability metrics. Represents the total impact on the target system. ISS = 1 - [(1-C) × (1-I) × (1-A)].</span>
+          <span class="def-term">Impact Score</span><span class="def-val">Derived from ISS and Scope. If Scope=Unchanged: Impact = 6.42 × ISS. If Scope=Changed: Impact = 7.52 × [ISS - 0.029] - 3.25 × [ISS - 0.02]^15.</span>
+          <span class="def-term">Exploitability Score</span><span class="def-val">Calculated from Attack Vector, Complexity, Privileges Required, and User Interaction. Represents ease of exploitation.</span>
+          <span class="def-term">Base Score Rule</span><span class="def-val">If Impact = 0, Base Score = 0. If Scope=Unchanged: Base = Impact + Exploitability. If Scope=Changed: Base = (Impact + Exploitability) × 1.08. Maximum score is 10. Rounded up to one decimal.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Vulnerability Validation and Context</div>
+        <div class="def-grid">
+          <span class="def-term">True Positive</span><span class="def-val">Scanner correctly identifies a real vulnerability. The vulnerability exists and was correctly reported. Requires remediation.</span>
+          <span class="def-term">False Positive</span><span class="def-val">Scanner reports a vulnerability that doesn't actually exist. Wastes remediation resources. Reduce by using credentialed scans and keeping plugins updated. Always validate before remediating.</span>
+          <span class="def-term">True Negative</span><span class="def-val">Scanner correctly identifies no vulnerability. The system is not vulnerable and was correctly assessed.</span>
+          <span class="def-term">False Negative</span><span class="def-val">Scanner misses a real vulnerability. More dangerous than false positives — creates false sense of security. Reduce by using comprehensive scan configurations and credentialed scans.</span>
+          <span class="def-term">Context — Internal</span><span class="def-val">Vulnerabilities on internal systems may be lower risk if the network is well-segmented and the system is not accessible from external networks or untrusted zones.</span>
+          <span class="def-term">Context — External</span><span class="def-val">Internet-facing systems are highest priority. Any vulnerability that could be exploited by an unauthenticated remote attacker must be treated as critical.</span>
+          <span class="def-term">Context — Isolated</span><span class="def-val">Air-gapped or highly isolated systems may have vulnerabilities that pose lower risk due to limited accessibility, even if the CVSS score is high.</span>
+          <span class="def-term">Asset Value</span><span class="def-val">Vulnerability severity must be considered in the context of what the vulnerable system does. A critical vulnerability on a non-critical test system may be lower priority than a medium vulnerability on a system storing sensitive PII.</span>
+          <span class="def-term">Exploitability/Weaponization</span><span class="def-val">Is exploit code publicly available? Is it being actively exploited in the wild? CISA's Known Exploited Vulnerabilities (KEV) catalog identifies vulnerabilities actively exploited. Actively exploited = highest priority regardless of CVSS score.</span>
+          <span class="def-term">Zero-Day</span><span class="def-val">Vulnerability with no patch available. No vendor-supplied fix exists. Organizations must rely on compensating controls, temporary mitigations, or accept the risk until a patch is released.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Common Vulnerability Types</div>
+        <div class="def-grid">
+          <span class="def-term">Buffer Overflow</span><span class="def-val">Writing more data to a buffer than it can hold. Overwrites adjacent memory. Can corrupt data, crash programs, or allow attackers to execute arbitrary code. Types: stack overflow, heap overflow, integer overflow. Prevent: bounds checking, ASLR, DEP, safe functions.</span>
+          <span class="def-term">Privilege Escalation</span><span class="def-val">Gaining access beyond what was authorized. Vertical = gaining higher privileges (user→admin). Horizontal = accessing another user's resources at the same level. Dirty COW is a famous kernel privilege escalation example.</span>
+          <span class="def-term">Arbitrary Code Execution</span><span class="def-val">Attacker can run code of their choice on the target system. Catastrophic if code runs with admin privileges. Often results from buffer overflows, injection flaws, or deserialization vulnerabilities.</span>
+          <span class="def-term">Missing Patches</span><span class="def-val">Unpatched systems remain vulnerable to known exploits. Many major breaches exploit vulnerabilities patched months or years prior. Verizon DBIR found 4 overflow vulnerabilities (12–16 years old) responsible for 85% of exploited cases in their study.</span>
+          <span class="def-term">End-of-Life Systems</span><span class="def-val">Systems where vendor no longer releases patches. Running EOL software = permanent unpatched vulnerabilities. Plan and budget for replacement before EOL dates.</span>
+          <span class="def-term">Insecure Protocols</span><span class="def-val">Protocols designed without security (Telnet, FTP, HTTP, older SSL/TLS, MD5, SHA-1). Should be replaced with secure equivalents (SSH, SFTP/SCP, HTTPS, TLS 1.2+, SHA-256+). Vulnerability scanners detect insecure protocol use.</span>
+          <span class="def-term">Misconfiguration</span><span class="def-val">Systems configured incorrectly in ways that allow attackers to gain information or access. Default credentials, unnecessary services, excessive permissions, verbose error messages, open cloud storage buckets.</span>
+          <span class="def-term">SQL Injection</span><span class="def-val">Injects SQL commands into user input fields processed by a database. Can read, modify, or delete data. Prevent with parameterized queries/prepared statements.</span>
+          <span class="def-term">Cross-Site Scripting (XSS)</span><span class="def-val">Three forms: Persistent (stored in database, affects all visitors), Reflected (bounced off server in response), DOM-based (manipulates client-side JavaScript). Injects malicious scripts that execute in victims' browsers.</span>
+          <span class="def-term">Authentication Vulnerabilities</span><span class="def-val">Weak passwords, lack of MFA, credential exposure, password reuse across sites. Password reuse enables credential stuffing attacks.</span>
+          <span class="def-term">Certificate Issues</span><span class="def-val">Common certificate problems: name mismatch (cert issued for different domain), expired certificate, unknown/untrusted CA (self-signed or internal CA not trusted by browsers), weak signature algorithm.</span>
+          <span class="def-term">IoT/Embedded Systems</span><span class="def-val">Often have weak security — default passwords, no patch mechanism, long deployment lifecycles, limited computing resources. ICS/SCADA systems are particularly critical. Use network segmentation to isolate IoT from critical systems.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH08 – ANALYZING VULNERABILITY SCANS ═══ -->
+  <section class="chapter" id="ch08">
+    <div class="chapter-header"><span class="chapter-num">CH 08</span><h2 class="chapter-title">Analyzing Vulnerability Scans</h2><span class="chapter-obj">Obj 2.1 · 2.2 · 2.5</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Risk Management Framework</div>
+        <div class="def-grid">
+          <span class="def-term">Risk Identification</span><span class="def-val">Identify threats and vulnerabilities in the operating environment. Combine to understand the risk landscape.</span>
+          <span class="def-term">Risk Calculation</span><span class="def-val">Risk Severity = Probability × Magnitude. Probability = likelihood the risk will occur. Magnitude = impact on the organization if it does occur.</span>
+          <span class="def-term">Risk Avoidance</span><span class="def-val">Stop the activity that creates the risk. Eliminate the risk by not doing the risky thing. Example: discontinue use of a vulnerable service entirely.</span>
+          <span class="def-term">Risk Transference</span><span class="def-val">Transfer financial consequences to a third party. Cyber insurance. SLAs with vendors. Does not eliminate the risk — only shifts financial exposure.</span>
+          <span class="def-term">Risk Acceptance</span><span class="def-val">Acknowledge the risk and choose to continue operating without additional controls. Must be a documented, conscious decision — not ignoring the risk. Appropriate for low-probability, low-impact risks.</span>
+          <span class="def-term">Risk Mitigation</span><span class="def-val">Implement controls to reduce probability or impact of the risk. The most common response. Examples: patching, adding MFA, network segmentation.</span>
+          <span class="def-term">ERM (Enterprise Risk Management)</span><span class="def-val">Formal organizational approach to risk analysis. Identifies risks, determines severity, adopts risk management strategies. Produces risk register documenting all identified risks and treatment decisions.</span>
+          <span class="def-term">BIA (Business Impact Analysis)</span><span class="def-val">Identifies critical business functions and the impact of disruptions. Determines RTO, RPO, and MTBF/MTTR for critical systems. Foundation of DR and BCP planning. Informs vulnerability prioritization — vulnerabilities affecting critical business functions get highest priority.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Security Controls</div>
+        <div class="def-grid">
+          <span class="def-term">Managerial Controls</span><span class="def-val">Administrative and oversight controls. Policies, procedures, risk assessments, security planning. Set the framework within which technical and operational controls function.</span>
+          <span class="def-term">Operational Controls</span><span class="def-val">Implemented by people rather than systems. Security awareness training, physical security, personnel security, incident response procedures.</span>
+          <span class="def-term">Technical Controls</span><span class="def-val">Implemented by technology. Firewalls, encryption, MFA, IDS/IPS, SIEM, access control systems.</span>
+          <span class="def-term">Preventative</span><span class="def-val">Stop incidents before they occur. Firewalls, access controls, encryption, patching, security awareness training.</span>
+          <span class="def-term">Detective</span><span class="def-val">Identify incidents that have occurred or are occurring. IDS, SIEM, audit logs, security cameras, anomaly detection.</span>
+          <span class="def-term">Responsive / Corrective</span><span class="def-val">Respond to and correct the impact of incidents. Incident response procedures, backups, forensics tools, patch management.</span>
+          <span class="def-term">Compensating Controls</span><span class="def-val">Alternative security measures used when the primary control is not feasible. Must provide equivalent protection. PCI DSS specifically addresses compensating controls for merchants who cannot meet standard requirements.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Attack Surface Management</div>
+        <div class="def-grid">
+          <span class="def-term">Attack Surface</span><span class="def-val">All points where an attacker could interact with a system — ports, interfaces, APIs, user inputs, physical access points. Goal: minimize the attack surface. Remove everything that isn't needed.</span>
+          <span class="def-term">Adversary Capability</span><span class="def-val">Assessment of what the threat actor can do. Resources, skills, tools, access level. Higher capability actors require stronger defenses.</span>
+          <span class="def-term">Attack Vectors</span><span class="def-val">Specific paths an attacker could use to exploit vulnerabilities. Network, web application, email, physical access, supply chain, insider threat.</span>
+          <span class="def-term">Edge Discovery</span><span class="def-val">Identifying all externally facing assets. You can't protect what you don't know exists. Includes cloud assets, shadow IT, and legacy systems.</span>
+          <span class="def-term">Bug Bounty Programs</span><span class="def-val">Invite security researchers to find and responsibly disclose vulnerabilities in exchange for rewards. Supplements internal testing with external perspectives.</span>
+          <span class="def-term">Attack Surface Reduction</span><span class="def-val">Disabling unused services, ports, protocols, and features. Removing unnecessary software. Limiting internet exposure. Applying least privilege.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Change and Configuration Management</div>
+        <div class="def-grid">
+          <span class="def-term">Configuration Management</span><span class="def-val">Tracks how specific endpoint devices are set up. Maintains a known-good baseline for each system type. Enables detection of unauthorized changes (configuration drift).</span>
+          <span class="def-term">Change Management</span><span class="def-val">Formal process for identifying, requesting, approving, and implementing changes. Prevents unauthorized changes. Ensures changes are tested, documented, and reversible. Reduces risk of introducing new vulnerabilities.</span>
+          <span class="def-term">Baselining</span><span class="def-val">Snapshot of a system or application at a known-good point in time. Compare current state against baseline to detect unauthorized changes. Used by FIM (File Integrity Monitoring) tools and SIEM correlation rules.</span>
+          <span class="def-term">Version Control</span><span class="def-val">Assigns incrementing version numbers to software releases. Enables identification of what version is running on any system. Critical for vulnerability management — knowing exact versions allows accurate vulnerability matching.</span>
+          <span class="def-term">Patch Management</span><span class="def-val">Process of identifying, testing, deploying, and verifying security patches. Test in non-production first. Deploy during maintenance windows. Validate successful application. Rollback plan for failed patches. WSUS for Windows environments. Yum/DNF/APT for Linux.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Secure Software Development Lifecycle (SDLC)</div>
+        <div class="def-grid">
+          <span class="def-term">SDLC Models</span><span class="def-val">Waterfall: sequential phases (Requirements → Design → Implementation → Testing → Deployment). Spiral: iterative with risk management. Agile: short sprints with continuous delivery. RAD (Rapid Application Development): iterative prototyping, no planning phase.</span>
+          <span class="def-term">DevOps / DevSecOps</span><span class="def-val">DevOps: combines development and IT operations to optimize the SDLC. DevSecOps: security integrated into DevOps — security is everyone's responsibility throughout the pipeline. "Shift left" means finding security issues earlier (cheaper) in development.</span>
+          <span class="def-term">CI/CD</span><span class="def-val">Continuous Integration: developers commit code to shared repository frequently with automated builds and tests. Continuous Deployment: tested changes automatically deployed to production. Risk: new vulnerabilities can be rapidly deployed. Logging and monitoring must fit the CI/CD model.</span>
+          <span class="def-term">Secure Coding Best Practices</span><span class="def-val">Input validation (never trust user input). Output encoding (prevent injection). Session management (secure tokens, expiry, invalidation). Authentication (strong, MFA). Data protection (encrypt sensitive data at rest and in transit). Parameterized queries (prevent SQL injection).</span>
+          <span class="def-term">Code Testing Types</span><span class="def-val">SAST (static — source code, no execution). DAST (dynamic — running app). Fuzzing (random/malformed input). Fault injection (deliberate errors). Mutation testing (intentional code bugs). Security regression testing (verify fixes don't reintroduce issues). Debuggers (Immunity Debugger, GDB).</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Policies and Governance</div>
+        <div class="def-grid">
+          <span class="def-term">Policy</span><span class="def-val">High-level management statement of intent. Sets direction. Must be followed. Examples: Information Security Policy, Acceptable Use Policy (AUP), Data Classification Policy, Password Policy, Continuous Monitoring Policy.</span>
+          <span class="def-term">Standards</span><span class="def-val">Mandatory requirements describing HOW to comply with policy. More specific than policy. Approved at lower level than policies. Changes more regularly.</span>
+          <span class="def-term">Procedures</span><span class="def-val">Step-by-step instructions for performing specific tasks. Most specific and detailed. Derived from standards and policies.</span>
+          <span class="def-term">Guidelines</span><span class="def-val">Recommended practices — not mandatory. Advisory. Provide flexibility for complex situations.</span>
+          <span class="def-term">Exceptions and Compensating Controls</span><span class="def-val">When normal controls cannot be applied, document the exception formally with business justification and implement compensating controls to mitigate the increased risk.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH09 – INCIDENT RESPONSE PROGRAM ═══ -->
+  <section class="chapter" id="ch09">
+    <div class="chapter-header"><span class="chapter-num">CH 09</span><h2 class="chapter-title">Building an Incident Response Program</h2><span class="chapter-obj">Obj 3.1 · 3.2 · 3.3</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Attack Methodology Frameworks</div>
+        <div class="def-grid">
+          <span class="def-term">Cyber Kill Chain (Lockheed Martin)</span><span class="def-val">Seven sequential phases of a targeted attack. Each phase must succeed for the attack to progress. Defenders can break the chain at any phase. Phases: Reconnaissance → Weaponization → Delivery → Exploitation → Installation → Command &amp; Control → Actions on Objectives.</span>
+          <span class="def-term">Kill Chain — Reconnaissance</span><span class="def-val">Attacker researches the target. OSINT, scanning, social engineering. Identifies targets, systems, and potential vulnerabilities.</span>
+          <span class="def-term">Kill Chain — Weaponization</span><span class="def-val">Creates attack payload (malware, exploit) tailored to identified vulnerabilities. No target interaction yet.</span>
+          <span class="def-term">Kill Chain — Delivery</span><span class="def-val">Transmits weapon to target. Email attachment, malicious website, USB drop, compromised update server.</span>
+          <span class="def-term">Kill Chain — Exploitation</span><span class="def-val">Weapon triggers, exploiting a vulnerability to execute code on the target system.</span>
+          <span class="def-term">Kill Chain — Installation</span><span class="def-val">Malware installs on target. Backdoor, RAT, or persistent access mechanism established.</span>
+          <span class="def-term">Kill Chain — Command &amp; Control (C2)</span><span class="def-val">Compromised system connects to attacker's C2 infrastructure. Attacker gains remote control. Beaconing behavior begins here.</span>
+          <span class="def-term">Kill Chain — Actions on Objectives</span><span class="def-val">Attacker achieves their goal: data exfiltration, lateral movement, ransomware deployment, sabotage, persistence.</span>
+        </div>
+        <div class="def-grid" style="margin-top:1rem;">
+          <span class="def-term">Diamond Model</span><span class="def-val">Four core features of every intrusion event: Adversary (attacker), Victim (target), Infrastructure (tools/systems used), Capability (TTPs employed). Connected by relationships forming a diamond shape. Used to discover more information by following the edges between events. Helps attribute attacks and understand attacker patterns.</span>
+          <span class="def-term">MITRE ATT&amp;CK</span><span class="def-val">Comprehensive knowledge base of real-world adversary tactics and techniques. Matrix format: Tactics (columns) = goals. Techniques (rows) = methods. Sub-techniques provide more specificity. Used for detection engineering, threat hunting, and purple teaming.</span>
+          <span class="def-term">OSSTMM</span><span class="def-val">Open Source Security Testing Methodology Manual. Comprehensive testing methodology for security assessments. Provides rules of engagement, measurement metrics, and testing categories.</span>
+          <span class="def-term">OWASP Testing Guide</span><span class="def-val">Comprehensive guide for testing web application security. Covers all OWASP Top 10 categories plus many additional tests. Provides specific test cases and techniques.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">CSIRT Structure</div>
+        <div class="def-grid">
+          <span class="def-term">CSIRT</span><span class="def-val">Computer Security Incident Response Team. Organizational function responsible for incident response. Has defined scope of authority, composition, and coordination mechanisms.</span>
+          <span class="def-term">CSIRT Members</span><span class="def-val">Typically includes: IR analysts, forensic investigators, legal counsel, HR representative, PR/communications, management sponsor. Technical and non-technical roles both required.</span>
+          <span class="def-term">Scope of Control</span><span class="def-val">Defines what systems and incidents the CSIRT has authority over. Larger scope = more complex coordination. Smaller scope = faster response within defined boundaries.</span>
+          <span class="def-term">Coordination</span><span class="def-val">During incidents, the CSIRT coordinates with: system owners, law enforcement (if criminal activity), regulatory bodies (if required), insurance carriers, external forensics firms, and in major incidents, public relations.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Incident Classification</div>
+        <div class="def-grid">
+          <span class="def-term">Functional Impact</span><span class="def-val">Degree of impairment to the organization's ability to provide services. Ranges from no impact (business functions fully operational) to loss of a mission-critical function. Higher functional impact = higher severity.</span>
+          <span class="def-term">Economic Impact</span><span class="def-val">Financial consequences — direct losses, recovery costs, regulatory fines, reputational damage, lost business. Thresholds vary by organization size. Document and track throughout the incident.</span>
+          <span class="def-term">Recoverability</span><span class="def-val">Time and resources required to restore services to normal operation. Ranges from "regular" (fully recoverable with effort) to "non-recoverable" (permanent damage — notify leadership immediately).</span>
+          <span class="def-term">Information Impact</span><span class="def-val">Nature of data affected. Privacy data breach, intellectual property theft, unauthorized system access, or data destruction. Determines regulatory reporting requirements and notification obligations.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">IR Phases</div>
+        <div class="ts-steps">
+          <div class="ts-step"><strong>Preparation.</strong> Develop IR plan, build CSIRT, create playbooks, conduct tabletop exercises, acquire and test tools, train staff, establish BC/DR capabilities.</div>
+          <div class="ts-step"><strong>Detection and Analysis.</strong> Identify potential incidents from alerts, logs, public information, or people reports. Analyze to confirm incident and determine scope, impact, and severity.</div>
+          <div class="ts-step"><strong>Containment.</strong> Limit the spread and damage of the incident. Short-term containment (immediate isolation) and long-term containment (patching, rebuilding).</div>
+          <div class="ts-step"><strong>Eradication.</strong> Remove the root cause — malware, backdoors, unauthorized accounts. Patch vulnerabilities exploited. Rebuild compromised systems.</div>
+          <div class="ts-step"><strong>Recovery.</strong> Restore systems to normal operation. Validate that systems are clean and functioning. Monitor closely for signs of re-infection.</div>
+          <div class="ts-step"><strong>Post-Incident Activity.</strong> Root cause analysis, lessons learned review, update IR plan and playbooks, implement preventive measures, document findings in final report.</div>
+        </div>
+        <div class="callout callout-exam">The exam uses NIST's IR phases. Know the order: Preparation → Detection/Analysis → Containment → Eradication → Recovery → Post-Incident. Preparation is not a reactive phase — it happens before incidents. Post-incident happens after. Some organizations merge Containment/Eradication/Recovery into one phase.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Preparation Phase Details</div>
+        <div class="def-grid">
+          <span class="def-term">IR Plan</span><span class="def-val">Documented policy and procedures for responding to incidents. Defines roles, responsibilities, communication channels, and escalation procedures. Must be reviewed and updated regularly.</span>
+          <span class="def-term">Playbooks</span><span class="def-val">Specific procedures for specific incident types (ransomware playbook, phishing playbook, data breach playbook). Developed during calm periods. Ready to execute when needed. SOAR can automate playbook execution.</span>
+          <span class="def-term">Tabletop Exercise</span><span class="def-val">Discussion-based scenario walkthrough. Key personnel talk through a simulated incident. No systems involved. Tests the plan and team coordination. Cheapest and lowest-risk form of exercise.</span>
+          <span class="def-term">IR Toolkit (NIST)</span><span class="def-val">At minimum: digital forensic workstations, backup devices, laptops for analysis, spare server/networking equipment, blank removable media, portable printer, forensic and packet capture software, bootable USB with trusted forensic tools, office supplies and evidence collection materials.</span>
+          <span class="def-term">BC/DR</span><span class="def-val">Business Continuity and Disaster Recovery planning ensures the organization can continue critical functions during and after major incidents. IR plan and BC/DR plan must be aligned.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Detection and Analysis Actions</div>
+        <ul class="concept-list">
+          <li><strong>Profile networks and systems</strong> — establish what "normal" looks like before you need to identify abnormal.</li>
+          <li><strong>Understand normal behavior</strong> — behavioral baselines enable anomaly detection.</li>
+          <li><strong>Create a logging policy</strong> — ensure sufficient logging is in place across all critical systems.</li>
+          <li><strong>Perform event correlation</strong> — connect events across multiple sources to identify patterns indicative of incidents.</li>
+          <li><strong>Synchronize clocks</strong> — NTP across all systems is critical for accurate log correlation and timeline reconstruction.</li>
+          <li><strong>Maintain a knowledge base</strong> — document known threats, TTPs, and previous incidents to accelerate analysis.</li>
+          <li><strong>Capture network traffic</strong> — full packet capture or NetFlow during suspected incidents enables forensic analysis.</li>
+          <li><strong>Filter information</strong> — reduce noise to focus on high-priority signals.</li>
+          <li><strong>Seek assistance</strong> — know when and how to engage external resources (threat intelligence services, CERT, law enforcement).</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH10 – INCIDENT DETECTION AND ANALYSIS ═══ -->
+  <section class="chapter" id="ch10">
+    <div class="chapter-header"><span class="chapter-num">CH 10</span><h2 class="chapter-title">Incident Detection and Analysis</h2><span class="chapter-obj">Obj 3.2</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Indicators of Compromise (IoCs)</div>
+        <div class="def-grid">
+          <span class="def-term">IoC Definition</span><span class="def-val">Artifacts, behaviors, or events that indicate a high probability that a system has been compromised. Used by security tools and analysts to detect active or past breaches. Three lenses: Collection, Analysis, Application.</span>
+          <span class="def-term">IoC — Collection</span><span class="def-val">Gathering data that may indicate compromise. Tools, logs, network monitoring, endpoint agents, threat intelligence feeds. Focus: acquiring sufficient data to perform meaningful analysis.</span>
+          <span class="def-term">IoC — Analysis</span><span class="def-val">Determining if collected data actually indicates compromise. Requires context — unusual traffic may be legitimate. Requires understanding of what the data means and whether it's likely benign or malicious. Threat intelligence helps provide context.</span>
+          <span class="def-term">IoC — Application</span><span class="def-val">Using confirmed IoCs to trigger incident response OR to build detection signatures for future monitoring. Threat intelligence services document and share IoCs for use in security monitoring tools.</span>
+        </div>
+        <p class="mini-h">IoC Feed Content Types</p>
+        <div class="tag-row">
+          <span class="tag tag-orange">IP addresses and hostnames of malicious actors</span>
+          <span class="tag tag-orange">Domain names used by malware/C2</span>
+          <span class="tag tag-orange">File hashes of malicious software</span>
+          <span class="tag tag-orange">Behavior-based indicators (TTPs)</span>
+          <span class="tag tag-orange">Email addresses used in attacks</span>
+          <span class="tag tag-orange">URL patterns associated with malware</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">IoC Categories</div>
+        <div class="def-grid">
+          <span class="def-term">Network-Based IoCs</span><span class="def-val">Unusual outbound traffic destinations or volumes. Unexpected use of protocols (RDP, SSH, file transfers going outbound). DNS queries for unusual or flagged domains. Outbound traffic at unusual times. Traffic to/from known malicious IPs or C2 infrastructure.</span>
+          <span class="def-term">Host-Based IoCs</span><span class="def-val">Processor/memory anomalies. New registry run keys or services. New user accounts created. Changes to scheduled tasks. Unexpected software or processes running. File system changes (new executables in unusual locations, file encryption activity).</span>
+          <span class="def-term">User/Account Behavior IoCs</span><span class="def-val">Unusual privileged account behaviors. Privilege escalation. Account activity at odd hours. Geographic impossibilities (login from New York and London 10 minutes apart — "impossible travel"). Addition of users to high-privilege groups. Bot-like activity patterns (precise timing, high volume, no variation).</span>
+          <span class="def-term">DNS-Based IoCs</span><span class="def-val">DNS queries for domains registered recently. Domains using DGA (Domain Generation Algorithms) — random-looking names. High-volume DNS queries to a single domain. DNS queries returning unusual response patterns (NXDOMAIN floods).</span>
+          <span class="def-term">File and Configuration IoCs</span><span class="def-val">Modified system files. New files in sensitive directories (Windows system32, Linux /bin or /etc). Changes to critical configuration files. Log file tampering (evidence of an attacker covering tracks).</span>
+          <span class="def-term">DoS IoCs</span><span class="def-val">Sudden extreme traffic volume increase. Service unresponsive or degraded. Traffic from many sources to a single destination. SYN flood signatures in network traffic.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Evidence Acquisition and Preservation</div>
+        <div class="def-grid">
+          <span class="def-term">Chain of Custody</span><span class="def-val">Documentation tracking evidence through its entire lifecycle — who collected it, when, how, and where it has been since. Ensures evidence can be used in legal proceedings. Any break in chain of custody can render evidence inadmissible. Document every transfer, analysis, and storage event.</span>
+          <span class="def-term">Data Integrity</span><span class="def-val">Verified using cryptographic hashing. Hash the evidence at collection, document the hash value, re-hash before analysis and compare. If hashes match, the evidence has not been altered. Common algorithms: MD5, SHA-1 (legacy), SHA-256 (current standard).</span>
+          <span class="def-term">Preservation</span><span class="def-val">Obtaining, validating, and storing evidence needed for investigations or legal purposes. Preserve in write-protected, tamper-evident storage. Use write blockers when imaging drives. Never work on original evidence — always work on forensic copies.</span>
+          <span class="def-term">Legal Hold</span><span class="def-val">Notification issued during or before legal proceedings directing an organization to preserve data relevant to potential litigation. Requires preservation of all relevant data, even data scheduled for deletion per normal retention policies. Failure to comply can result in sanctions.</span>
+        </div>
+        <div class="callout callout-exam">The exam expects you to understand all four evidence concepts: chain of custody (documentation of evidence handling), data integrity (hashing proves untampered), preservation (write-protect, forensic copies), and legal holds (must preserve everything when notified). All four are directly in the CS0-003 objectives.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH11 – CONTAINMENT, ERADICATION, RECOVERY ═══ -->
+  <section class="chapter" id="ch11">
+    <div class="chapter-header"><span class="chapter-num">CH 11</span><h2 class="chapter-title">Containment, Eradication &amp; Recovery</h2><span class="chapter-obj">Obj 3.2</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Containment Strategies</div>
+        <div class="def-grid">
+          <span class="def-term">Scope Assessment</span><span class="def-val">Before containing, determine the full extent of the compromise. Which systems are affected? What data may have been accessed or exfiltrated? How did the attacker get in? Containment without full scoping may leave backdoors in place.</span>
+          <span class="def-term">Impact Assessment</span><span class="def-val">Determine the business impact of the incident and the proposed containment actions. Containment itself can impact business operations — balance security need against operational impact.</span>
+          <span class="def-term">Network Segmentation</span><span class="def-val">Proactive segmentation limits attacker lateral movement. During an incident, increase segmentation to isolate compromised segments from the rest of the network. ACLs and firewall rules can create emergency isolation without full disconnection.</span>
+          <span class="def-term">Isolation</span><span class="def-val">Completely cut off compromised systems from the network while maintaining power for forensic investigation. More severe than segmentation — no network access at all. Preserves volatile data (RAM) while preventing further spread.</span>
+          <span class="def-term">Removal</span><span class="def-val">Taking the system completely offline — power off or physically disconnect. Most severe containment. Destroys volatile data (RAM, running processes). Use only when isolation is insufficient or forensic analysis is complete.</span>
+          <span class="def-term">Remediation</span><span class="def-val">Addressing the vulnerabilities and configurations that allowed the breach. Patch, reconfigure, update, or replace affected systems and security controls.</span>
+          <span class="def-term">Compensating Controls</span><span class="def-val">Temporary additional security measures deployed during containment when permanent fixes cannot be immediately implemented. Must be effective and documented.</span>
+        </div>
+        <div class="callout callout-exam">Isolation vs. Removal: Isolation maintains the network connection but cuts it from the rest of the network (still on, still observable). Removal takes the system completely offline. Isolation is preferred for forensic purposes — keep systems powered on to preserve volatile evidence. Removal is a last resort.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Identifying Attackers</div>
+        <div class="def-grid">
+          <span class="def-term">Attribution Challenge</span><span class="def-val">Identifying the perpetrators of a cybersecurity incident is complex and time-consuming. NIST guidance: "Identifying an attacking host can be a time-consuming and futile process that can prevent a team from achieving its primary goal — minimizing the business impact." Prioritize incident response over attribution during active incidents.</span>
+          <span class="def-term">Conflict with Law Enforcement</span><span class="def-val">Organizations may want to notify law enforcement and preserve evidence for prosecution. But this can conflict with the need to eradicate and recover quickly. Establish legal counsel relationship and law enforcement contacts before incidents occur.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Eradication</div>
+        <div class="def-grid">
+          <span class="def-term">Reconstruction / Re-imaging</span><span class="def-val">Rebuild systems from scratch or restore from a known-good image. Most thorough eradication method. Eliminates all malware including sophisticated rootkits. Rebuild from the ground up or from a secure baseline image, not from backups that may be compromised.</span>
+          <span class="def-term">Root Cause in Mind</span><span class="def-val">During rebuilding, address the root cause. Patch the vulnerability that was exploited. Remove the misconfiguration that allowed access. Otherwise the attacker will simply re-compromise the newly rebuilt system.</span>
+          <span class="def-term">Patching</span><span class="def-val">Apply all outstanding security patches before bringing systems back online. Prioritize patches for vulnerabilities involved in the incident.</span>
+          <span class="def-term">Sanitization and Disposal</span><span class="def-val">For systems that cannot be returned to service or that stored highly sensitive data: overwrite (software), degauss (magnetic media), physical destruction (shredding, drilling). Choose method based on data sensitivity and media type. Document disposal for compliance.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Recovery and Post-Incident</div>
+        <div class="def-grid">
+          <span class="def-term">Validating Recovery</span><span class="def-val">Before declaring recovery complete: verify systems are functioning normally, re-scan for vulnerabilities, monitor closely for signs of re-infection, confirm no backdoors remain, validate data integrity.</span>
+          <span class="def-term">Post-Incident Activities</span><span class="def-val">Root cause analysis determines what happened and why. Lessons learned identifies gaps and improvements. Final report documents the incident comprehensively. Update IR plan, playbooks, and security controls based on lessons learned.</span>
+          <span class="def-term">Final Report Components</span><span class="def-val">Chronology of events. Root cause. Location and description of evidence collected. Actions taken (containment, eradication, recovery) with rationale. Impact estimates. Results of post-recovery validation. Issues identified in lessons learned review.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH12 – REPORTING AND COMMUNICATION ═══ -->
+  <section class="chapter" id="ch12">
+    <div class="chapter-header"><span class="chapter-num">CH 12</span><h2 class="chapter-title">Reporting and Communication</h2><span class="chapter-obj">Obj 4.1 · 4.2</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Vulnerability Management Reporting</div>
+        <div class="def-grid">
+          <span class="def-term">Report Critical Elements</span><span class="def-val">Listing of vulnerabilities. Affected hosts (hostname and IP). Risk score relevant to the organization. Mitigation options and recommendations. Notes on recurrence if vulnerability has appeared before. Prioritization information for remediation planning.</span>
+          <span class="def-term">Compliance Reports</span><span class="def-val">Reports demonstrating compliance with regulatory requirements (PCI DSS scan reports, FISMA assessments). Include evidence of controls in place, scan results, and any exceptions with compensating controls.</span>
+          <span class="def-term">Action Plans</span><span class="def-val">Steps to resolve identified vulnerabilities. Include: configuration management changes, patching schedule, compensating controls where patching isn't possible, awareness and training requirements, timeline and responsibility assignments.</span>
+          <span class="def-term">Management Dashboards</span><span class="def-val">High-level summary for leadership. Quick snapshot of security posture. Trends over time. Top 10 vulnerabilities. Critical and zero-day counts. SLO compliance status.</span>
+          <span class="def-term">Technical Reports</span><span class="def-val">Detailed findings sorted by vulnerability type, severity, host group. Drill-down to specific host and vulnerability details including remediation guidance. Audience: security analysts and system administrators.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Stakeholders</div>
+        <div class="def-grid">
+          <span class="def-term">Technical Stakeholders</span><span class="def-val">System administrators, network engineers, developers. Need detailed technical information to perform remediation. Want specific instructions and timelines.</span>
+          <span class="def-term">Security/Audit/Compliance</span><span class="def-val">Security team, internal audit, compliance officers. Need comprehensive coverage data, exception documentation, and compliance status.</span>
+          <span class="def-term">Security Management</span><span class="def-val">CISO, security managers. Need metrics, trends, and risk summaries. Want to understand program effectiveness and resource allocation needs.</span>
+          <span class="def-term">Leadership/Executive</span><span class="def-val">C-suite, board. Need business-risk framing, financial impact, and regulatory exposure. High-level metrics and summaries. Do not need technical detail.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Inhibitors to Remediation</div>
+        <div class="def-grid">
+          <span class="def-term">MOU / SLA</span><span class="def-val">Memorandums of Understanding and Service Level Agreements may limit downtime or require advance notice before patching. Patch windows may be restricted. Work within contractual constraints while documenting the risk.</span>
+          <span class="def-term">Organizational Governance</span><span class="def-val">Approval processes, change advisory boards, and bureaucratic procedures slow down patching. Emergency change processes should exist for critical vulnerabilities.</span>
+          <span class="def-term">Business Process Interruption</span><span class="def-val">Patching may require downtime that disrupts business operations. Schedule maintenance windows. For 24/7 operations, coordinate with business owners for minimal-impact windows.</span>
+          <span class="def-term">Degrading Functionality</span><span class="def-val">Some patches break existing functionality. Test patches in non-production environments first. Rollback plan essential.</span>
+          <span class="def-term">Legacy Systems</span><span class="def-val">Older systems may not have patches available. Vendor may no longer support them. Options: isolate, compensating controls, or replace. Document accepted risk formally.</span>
+          <span class="def-term">Proprietary Systems</span><span class="def-val">Vendor-controlled systems where the organization cannot apply patches. Must wait for vendor to release fixes. Use compensating controls. Engage vendor proactively about patch timelines.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Incident Response Communication</div>
+        <div class="def-grid">
+          <span class="def-term">Stakeholder Identification</span><span class="def-val">Identify who needs to know about the incident. Internal: executives, legal, HR, affected business units. External: regulators, customers, law enforcement, insurance carrier, public.</span>
+          <span class="def-term">Incident Declaration and Escalation</span><span class="def-val">Formal declaration that an incident has occurred. Triggers escalation procedures, notification requirements, and resource allocation. Defines the IR team's authority to act.</span>
+          <span class="def-term">Legal Counsel</span><span class="def-val">May or may not be involved in all incidents. Critical when: data breach with notification requirements, potential for litigation, law enforcement involvement, regulatory reporting. Communications with legal may be privileged.</span>
+          <span class="def-term">Public Relations</span><span class="def-val">Customer communication and media statements. Transparency builds trust. Premature or inaccurate communication can worsen damage. Have approved templates ready. Coordinate with legal before making any public statements.</span>
+          <span class="def-term">Regulatory Reporting</span><span class="def-val">Many regulations require breach notification within specific timeframes. GDPR: 72 hours. HIPAA: 60 days. PCI DSS: immediately notify card brands. Know your obligations before an incident occurs.</span>
+          <span class="def-term">Law Enforcement</span><span class="def-val">Organization may engage law enforcement voluntarily or law enforcement may engage the organization. FBI, CISA, Secret Service (financial crimes) are common contacts. Engagement may affect investigation timeline and evidence handling.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Root Cause Analysis</div>
+        <div class="ts-steps">
+          <div class="ts-step"><strong>Identify problems and events.</strong> Document all events that occurred as part of the incident as completely as possible.</div>
+          <div class="ts-step"><strong>Establish a timeline.</strong> Determine what happened and in what order. Helps identify root cause(s) and understand attacker progression.</div>
+          <div class="ts-step"><strong>Differentiate causes.</strong> Distinguish root causes from contributing factors and results. Identify which event is the actual root cause vs. what were consequences of it.</div>
+          <div class="ts-step"><strong>Document the RCA.</strong> Often presented as a diagram or chart. Used to communicate findings to stakeholders and drive remediation of root causes.</div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">KPIs and Metrics</div>
+        <div class="def-grid">
+          <span class="def-term">MTTD (Mean Time to Detect)</span><span class="def-val">Average time from the initial event that caused an incident to when it was detected. Requires forensic analysis to determine accurately. High MTTD indicates detection gaps. APT actors often achieve months or years of undetected access.</span>
+          <span class="def-term">MTTR (Mean Time to Respond)</span><span class="def-val">Time from detection to activating the incident response process (declaring the incident). Measures speed of triage and escalation. Different from time to remediate.</span>
+          <span class="def-term">Mean Time to Remediate</span><span class="def-val">More complex to measure — each incident's size, scope, and complexity varies. Requires nuanced communication. May benefit from categorizing by incident type rather than a single aggregate number.</span>
+          <span class="def-term">Alert Volume</span><span class="def-val">Number of security alerts generated in a time period. High volume may indicate alert fatigue — analysts may miss real incidents. Work to reduce false positives and tune alert thresholds.</span>
+          <span class="def-term">Vulnerability Metrics</span><span class="def-val">Trends (improving or worsening over time?). Top 10 vulnerabilities by count or risk. Critical vulnerabilities and zero-days (immediate executive attention required). SLO compliance (are vulnerabilities being remediated within agreed timeframes?).</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CH13 – FORENSIC ANALYSIS ═══ -->
+  <section class="chapter" id="ch13">
+    <div class="chapter-header"><span class="chapter-num">CH 13</span><h2 class="chapter-title">Performing Forensic Analysis</h2><span class="chapter-obj">Obj 3.2 · 3.3</span></div>
+    <div class="chapter-body">
+
+      <div class="section-block">
+        <div class="section-title">Order of Volatility</div>
+        <p>Evidence must be collected in order of volatility — most volatile first (lost when power is removed) to least volatile. Failing to capture volatile evidence first means losing it forever.</p>
+        <table class="data-table">
+          <thead><tr><th>Order</th><th>Evidence Type</th><th>Volatility</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>CPU registers and cache</td><td><span class="bad">Extremely volatile</span></td><td>Lost immediately on shutdown. Rarely captured in practice.</td></tr>
+            <tr><td>2</td><td>RAM / Memory</td><td><span class="bad">Very volatile</span></td><td>Lost on shutdown. Contains running processes, keys, passwords, network connections. Use memory acquisition tools (Volatility, WinPmem).</td></tr>
+            <tr><td>3</td><td>Network connections and state</td><td><span class="bad">Very volatile</span></td><td>Active connections, ARP cache, routing table. <code>netstat</code>, <code>arp -a</code>, <code>route</code>.</td></tr>
+            <tr><td>4</td><td>Running processes</td><td><span class="bad">Volatile</span></td><td>List with <code>ps aux</code> or Task Manager before shutdown.</td></tr>
+            <tr><td>5</td><td>Disk / Storage</td><td><span class="neutral">Persistent</span></td><td>Survives shutdown. Image with write blocker to preserve original.</td></tr>
+            <tr><td>6</td><td>Logs (local)</td><td><span class="neutral">Persistent</span></td><td>May be tampered by attacker. Compare with centralized SIEM logs.</td></tr>
+            <tr><td>7</td><td>Remote logging and monitoring</td><td><span class="good">Most persistent</span></td><td>SIEM logs, cloud logs. Harder for attacker to tamper with.</td></tr>
+            <tr><td>8</td><td>Physical configuration, network topology, archived media</td><td><span class="good">Most persistent</span></td><td>Hardware, network diagrams, offline backups.</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-exam">Order of volatility is directly tested. Most volatile first: RAM → Network state → Running processes → Disk → Logs → Remote logs. Think about what data disappears when you pull the power cord. Never power off a system being investigated until volatile data is captured unless it's the only way to stop ongoing damage.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Forensic Investigation Process</div>
+        <div class="ts-steps">
+          <div class="ts-step"><strong>Determine goals.</strong> What are you trying to find? What legal or business questions must be answered?</div>
+          <div class="ts-step"><strong>Outline locations and types of data.</strong> Where does relevant evidence reside? Which systems, which storage media, which logs?</div>
+          <div class="ts-step"><strong>Document and review plan.</strong> Get sign-off before beginning. Ensure legal authority exists. Understand scope and constraints.</div>
+          <div class="ts-step"><strong>Acquire and preserve evidence.</strong> Collect in order of volatility. Use write blockers. Hash everything. Document chain of custody.</div>
+          <div class="ts-step"><strong>Perform initial analysis.</strong> Review acquired evidence for obvious indicators. Build timeline. Identify key artifacts of interest.</div>
+          <div class="ts-step"><strong>Conduct deeper investigation.</strong> Follow leads from initial analysis. Correlate findings across evidence sources. Reconstruct attacker actions.</div>
+          <div class="ts-step"><strong>Report on findings.</strong> Document methodology, findings, and conclusions. Write for the intended audience (technical team, executives, legal, law enforcement).</div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Drive Image Acquisition and Validation</div>
+        <div class="def-grid">
+          <span class="def-term">Write Blockers</span><span class="def-val">Hardware or software device that prevents any writes to the original evidence drive. Ensures forensic acquisition does not alter the original evidence. Required for any forensic imaging. Hardware write blockers are more reliable than software.</span>
+          <span class="def-term">Forensic Drive Duplicators</span><span class="def-val">Specialized hardware that creates exact bit-for-bit copies of storage media. Works independently without a computer. Creates multiple copies simultaneously.</span>
+          <span class="def-term">dd Command</span><span class="def-val">Low-level Linux disk imaging. <code>dd if=/dev/sda of=disk.img</code> creates a bit-for-bit image. Slow. No verification built in — hash separately. <code>dcfldd</code> is a forensic-enhanced version with built-in hashing.</span>
+          <span class="def-term">Image Verification</span><span class="def-val">Hash the original drive and the forensic copy. Hashes must match to prove the copy is identical to the original. Use SHA-256 or MD5 (for legacy compatibility). Document both hash values in chain of custody documentation.</span>
+          <span class="def-term">Wiped Drives/Media</span><span class="def-val">Always use wiped, verified-empty media for evidence storage. Prevents contamination of evidence with data from previous investigations.</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Log Acquisition and Analysis</div>
+        <div class="def-grid">
+          <span class="def-term">Log Acquisition Steps</span><span class="def-val">1. Determine where logs reside and their format. 2. Determine the time period needed. 3. Obtain copy from system/device administrators and document how obtained. 4. Validate with checksums. 5. Identify items of interest (actions, user IDs, event IDs, timeframes). 6. Analyze with appropriate tools.</span>
+          <span class="def-term">Log Analysis Tools</span><span class="def-val">Splunk — powerful SIEM and log analysis platform. ELA (Event Log Analyzer) — Windows event log analysis. Sawmill — multi-format log analysis. Text editors — for simple cases. grep, awk, sed — for CLI-based log analysis on Linux.</span>
+          <span class="def-term">Target Evidence Locations</span><span class="def-val">System event logs (Windows/Linux). Application logs. Authentication/security logs. Network device logs (firewall, router, switch). Email server logs. Web server access logs. Database audit logs. Cloud provider logs (AWS CloudTrail, Azure Monitor).</span>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Forensic Toolkit</div>
+        <div class="def-grid">
+          <span class="def-term">Digital Forensic Workstation</span><span class="def-val">Dedicated, hardened workstation for forensic analysis. Isolated from production networks. Running forensic analysis software. Should be powerful enough to handle large image files and memory dumps.</span>
+          <span class="def-term">Forensic Investigation Suite</span><span class="def-val">Comprehensive software for evidence analysis. Examples: Autopsy (open source), FTK (Forensic Toolkit), EnCase. Provides file carving, keyword search, timeline analysis, artifact extraction, and reporting.</span>
+          <span class="def-term">Write Blockers</span><span class="def-val">Hardware devices preventing writes to evidence media during acquisition. Critical for maintaining evidence integrity. Both IDE/SATA and USB blockers should be in the toolkit.</span>
+          <span class="def-term">Forensic Drive Duplicators</span><span class="def-val">Hardware imagers creating verified forensic copies without a computer. Examples: Tableau, Logicube. Essential for high-volume forensics work.</span>
+          <span class="def-term">Supporting Equipment</span><span class="def-val">Wiped drives and removable media (verified empty). Various cables and adapters (SATA, IDE, USB, NVMe). Camera for documenting physical evidence. Evidence labels and bags. Notebooks for handwritten documentation. Portable printer for on-site documentation.</span>
+        </div>
+        <div class="callout callout-exam">The NIST forensic toolkit contents are specifically listed in the CS0-003 objectives. Know: digital forensic workstation, forensic investigation suite, write blockers, forensic drive duplicators, wiped media, cables and adapters, camera, labels, and notebooks. These could appear in a scenario question asking what equipment to bring to an incident site.</div>
+      </div>
+
+      <div class="section-block">
+        <div class="section-title">Post-Incident Activity</div>
+        <div class="def-grid">
+          <span class="def-term">Root Cause Analysis</span><span class="def-val">Determines what happened and why. Uses timeline analysis and evidence review. Identifies the initial access vector, attack progression, and enabling conditions. Drives remediation to prevent recurrence.</span>
+          <span class="def-term">Lessons Learned</span><span class="def-val">Structured review of the incident response process itself. What worked? What didn't? What can be improved? Results in updates to IR plan, playbooks, detection rules, and security controls.</span>
+          <span class="def-term">Lessons Learned Meeting</span><span class="def-val">Include all major stakeholders from the response. Blameless — focus on process improvement, not individual failure. Document all findings and action items. Assign owners and deadlines. Follow up to ensure improvements are implemented.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  COMPTIA CYSA+ · CS0-003 · STAR V LEARNING CENTERS · JACKSONVILLE, FL<br>
+  SECURITY OPERATIONS · VULNERABILITY MANAGEMENT · INCIDENT RESPONSE · REPORTING · ALL 4 DOMAINS
+</footer>
+
+</body>
+</html>

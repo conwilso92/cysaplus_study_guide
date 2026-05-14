@@ -2,7 +2,7 @@
 
 A comprehensive study guide for the CompTIA CySA+ (Cybersecurity Analyst) CS0-003 certification exam, synthesized from course materials and official exam objectives. Built as a single dark-mode HTML file with full anchor navigation.
 
-🔗 **[View the Study Guide](https://conwilso92.github.io/cysa-plus-study-guide)**
+🔗 **[View the Study Guide](https://conwilso92.github.io/cysaplus-study-guide)**
 
 ---
 
@@ -35,25 +35,7 @@ All 13 chapters mapped to the 4 official exam domains:
 
 ---
 
-## Related Study Tools
-
-Part of a broader CompTIA certification study toolkit:
-
-| Repo | Description |
-|---|---|
-| [CompTia-core1-flashcards](https://github.com/conwilso92/CompTia-core1-flashcards) | A+ Core 1 interactive flashcard app |
-| [CompTia-core2-flashcards](https://github.com/conwilso92/CompTia-core2-flashcards) | A+ Core 2 interactive flashcard app |
-| [network-plus-flashcards](https://github.com/conwilso92/network-plus-flashcards) | Network+ interactive flashcard app |
-| [network-plus-study-guide](https://github.com/conwilso92/network-plus-study-guide) | Network+ N10-009 comprehensive study guide |
-| [server-plus-study-guide](https://github.com/conwilso92/server-plus-study-guide) | Server+ SK0-005 comprehensive study guide |
-| [security-plus-study-guide](https://github.com/conwilso92/security-plus-study-guide) | Security+ SY0-701 comprehensive study guide |
-| [linux-plus-study-guide](https://github.com/conwilso92/linux-plus-study-guide) | Linux+ XK0-006 comprehensive study guide |
-| [homelab](https://github.com/conwilso92/homelab) | Homelab documentation and configs |
-
----
-
 ## About
 
 Built while studying for the CompTIA CySA+ certification at Star V Learning Centers, Jacksonville, FL. Materials synthesized from course slide decks and the official CS0-003 exam objectives (Version 1.0).
 
-**Certifications:** CompTIA A+ (passed) · Server+ (passed) · Network+ (passed) · Security+ (passed) · Linux+ (in progress) · CySA+ (in progress)
